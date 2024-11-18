@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Line Api's</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes border-zoom {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-border-zoom {
+    animation: border-zoom 3s infinite;
+  }
+
+    .header-logo {
+      border: 2px solid white;
+      padding: 5px;
+      border-radius: 50%;
+    }
+
+    #sidebar {
+      z-index: 50;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-blue-500 to-blue-700 text-white min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-blue-800 text-white py-4 px-6 shadow-md flex justify-between items-center fade-in">
+  <div class="flex items-center">
+    <!-- Foto dengan border yang terus zoom -->
+    <div class="relative w-16 h-16">
+      <img src="https://pomf2.lain.la/f/c1pnucxp.jpg" alt="Logo"
+        class="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-white header-logo animate-border-zoom" />
+    </div>
+
+    <!-- Teks Line Api's dengan efek typing -->
+    <h1 id="animated-text" class="ml-4 text-2xl font-extrabold tracking-wide"></h1>
+  </div>
+    <!-- Menu button -->
+    <button id="menu-btn" class="text-white text-3xl font-bold hover:text-gray-300">≡</button>
+  </header>
+   
+  <!-- Sidebar -->
+<aside id="sidebar"
+  class="fixed top-0 left-0 w-64 min-h-screen bg-blue-900 text-white p-6 shadow-lg transform -translate-x-full transition-transform duration-300">
+  <!-- Logo and Header -->
+  <div class="flex flex-col items-center mb-6">
+    <img src="https://pomf2.lain.la/f/c1pnucxp.jpg" alt="Logo"
+      class="w-20 h-20 rounded-full border-4 border-white shadow-lg mb-4 hover:scale-105 transition-transform duration-300" />
+    <h1 class="text-2xl font-bold tracking-wide mb-1">Line API</h1>
+    <p class="text-sm text-gray-400 italic">Developer</p>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <!-- Main Section -->
+    <p class="text-gray-400 text-xs uppercase tracking-wide mb-4">Main</p>
+    <ul class="space-y-3">
+      <li>
+        <a href="#home"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7-9 7-9-7z" />
+          </svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#documentation"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5h6m-6 4h6m-6 4h6m-6 4h6" />
+          </svg>
+          Documentation
+        </a>
+      </li>
+      <li>
+        <a href="#endpoints"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Endpoints
+        </a>
+      </li>
+    </ul>
+
+    <!-- Analytics Section -->
+    <p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">Analytics</p>
+    <ul class="space-y-3">
+      <li>
+        <a href="#usage"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+          Usage Statistics
+        </a>
+      </li>
+    </ul>
+
+    <!-- Settings Section -->
+    <p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">Settings</p>
+    <ul class="space-y-3">
+      <li>
+        <a href="#auth"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 11c0-1.1-.9-2-2-2s-2 .9-2 2c0 1.1.9 2 2 2s2-.9 2-2zm0 6.5c2.2 0 4-1.8 4-4 0-1.1-.9-2-2-2s-2 .9-2 2c0 1.1.9 2 2 2zM6.5 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c1.7 0 3-1.3 3-3s-1.3-3-3-3z" />
+          </svg>
+          Authentication
+        </a>
+      </li>
+      <li>
+        <a href="#settings"
+          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19.4 15.6a8 8 0 1 1 0-7.2m-3.2 7.2L9.6 9.6m0 0l-5.2-5.2M12 3v1m4.2 1.2l-.8.8m-9.2-.8L6.8 3" />
+          </svg>
+          Settings
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6 fade-in">
+    <!-- Welcome Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mb-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Welcome to Line Api's</h2>
+      <p class="mb-4">Selamat datang di website Line Api!</p>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Gratis</li>
+        <li>Tanpa Login</li>
+        <li>Tanpa API Key</li>
+        <li>Unlimited Request</li>
+      </ul>
+    </div>
+
+    <!-- Battery Section -->
+    <div id="battery-info"
+      class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Battery Status</h2>
+      <div class="flex items-center space-x-4">
+        <div id="battery-icon" class="text-4xl">
+          🔋
+        </div>
+        <p id="battery-text" class="text-gray-600 text-lg">Memuat informasi baterai...</p>
+      </div>
+    </div>
+
+    <!-- IP Address Section -->
+    <div id="ip-info"
+      class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">IP Address</h2>
+      <p id="ip-text" class="text-gray-600 text-lg">Memuat informasi IP Address...</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Fitur Utama</h2>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Integrasi API dengan mudah</li>
+        <li>Statistik real-time</li>
+        <li>Kompatibilitas tinggi untuk berbagai platform</li>
+        <li>Respon cepat dengan latensi rendah</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-800 text-center text-sm py-4 text-gray-300 fade-in">
+    © 2024 Line Api's. All rights reserved.
+  </footer>
+
+  <script>
+  
+  // Elemen teks
+  const textElement = document.getElementById("animated-text");
+  const text = "Line Api's";
+  let index = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    if (isDeleting) {
+      // Hapus teks satu per satu
+      textElement.textContent = text.slice(0, index--);
+    } else {
+      // Tulis teks satu per satu
+      textElement.textContent = text.slice(0, index++);
+    }
+
+    if (!isDeleting && index > text.length) {
+      // Tunggu sebentar sebelum menghapus
+      isDeleting = true;
+      setTimeout(typeEffect, 800);
+    } else if (isDeleting && index === 0) {
+      // Mulai menulis ulang setelah menghapus
+      isDeleting = false;
+      setTimeout(typeEffect, 500);
+    } else {
+      // Kecepatan mengetik atau menghapus
+      setTimeout(typeEffect, 100);
+    }
+  }
+
+  // Mulai animasi mengetik
+  typeEffect();
+  
+  const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    // Toggle sidebar on menu button click
+    menuBtn.addEventListener('click', () => {
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+      }
+    });
+
+    // Close sidebar when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && e.target !== menuBtn) {
+        sidebar.classList.add('-translate-x-full');
+      }
+    });
+  
+    // Mendapatkan informasi baterai
+    async function getBatteryInfo() {
+      if (navigator.getBattery) {
+        const battery = await navigator.getBattery();
+        const batteryText = document.getElementById("battery-text");
+        const batteryIcon = document.getElementById("battery-icon");
+
+        function updateBatteryStatus() {
+          const level = Math.round(battery.level * 100);
+          batteryText.textContent = `Baterai: ${level}% ${
+            battery.charging ? "(Sedang mengisi daya)" : "(Tidak mengisi daya)"
+          }`;
+
+          if (battery.charging) {
+            batteryIcon.textContent = "⚡";
+            batteryIcon.classList.add("text-yellow-500", "pulse");
+          } else {
+            batteryIcon.textContent = "🔋";
+            batteryIcon.classList.remove("text-yellow-500", "pulse");
+          }
+        }
+
+        updateBatteryStatus();
+        battery.addEventListener("levelchange", updateBatteryStatus);
+        battery.addEventListener("chargingchange", updateBatteryStatus);
+      } else {
+        document.getElementById("battery-text").textContent =
+          "Informasi baterai tidak didukung pada perangkat ini.";
+      }
+    }
+
+    // Mendapatkan informasi IP Address
+    async function getIpInfo() {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        document.getElementById("ip-text").textContent = `IP Address: ${data.ip}`;
+      } catch (error) {
+        document.getElementById("ip-text").textContent =
+          "Gagal memuat informasi IP Address.";
+      }
+    }
+
+    // Hitung kunjungan
+    function countVisitors() {
+      const visitCount = localStorage.getItem("visitCount");
+      const newCount = visitCount ? parseInt(visitCount) + 1 : 1;
+      localStorage.setItem("visitCount", newCount);
+      console.log(`Jumlah kunjungan: ${newCount}`);
+    }
+
+    // Jalankan semua fungsi
+    getBatteryInfo();
+    getIpInfo();
+    countVisitors();
+  </script>
+</body>
+
+</html>
