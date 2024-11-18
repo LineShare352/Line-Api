@@ -64,40 +64,40 @@
   </div>
 
   <!-- Navigation -->
-  <nav>
-    <!-- Main Section -->
-    <p class="text-gray-400 text-xs uppercase tracking-wide mb-4">Main</p>
-    <ul class="space-y-3">
-      <li>
-        <a href="#home"
-          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7-9 7-9-7z" />
-          </svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#documentation"
-          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M9 5h6m-6 4h6m-6 4h6m-6 4h6" />
-          </svg>
-          Documentation
-        </a>
-      </li>
-      <li>
-        <a href="#endpoints"
-          class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M6 18L18 6M6 6l12 12" />
-          </svg>
-          Endpoints
-        </a>
-      </li>
-    </ul>
+<nav>
+  <!-- Main Section -->
+  <p class="text-gray-400 text-xs uppercase tracking-wide mb-4">Main</p>
+  <ul class="space-y-3">
+    <li>
+      <a href="index.html"
+        class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7-9 7-9-7z" />
+        </svg>
+        Home
+      </a>
+    </li>
+    <li>
+      <a href="index.html#documentation"
+        class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 5h6m-6 4h6m-6 4h6m-6 4h6" />
+        </svg>
+        Documentation
+      </a>
+    </li>
+    <li>
+      <a href="index.html#endpoints"
+        class="flex items-center gap-3 py-2 px-4 rounded-lg bg-blue-800 hover:bg-blue-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        Endpoints
+      </a>
+    </li>
+  </ul>
 
     <!-- Analytics Section -->
     <p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">Analytics</p>
@@ -194,36 +194,37 @@
 
   <script>
   
-  // Elemen teks
   const textElement = document.getElementById("animated-text");
-  const text = "Line Api's";
-  let index = 0;
-  let isDeleting = false;
+  const text = "Line Api's"; // Teks yang akan dianimasikan
+  let index = 0; // Indeks karakter saat ini
+  let isDeleting = false; // Status mengetik atau menghapus
 
   function typeEffect() {
     if (isDeleting) {
-      // Hapus teks satu per satu
+      // Jika menghapus, kurangi panjang teks
       textElement.textContent = text.slice(0, index--);
     } else {
-      // Tulis teks satu per satu
+      // Jika mengetik, tambahkan panjang teks
       textElement.textContent = text.slice(0, index++);
     }
 
+    // Jika sudah selesai mengetik, tunggu sebelum menghapus
     if (!isDeleting && index > text.length) {
-      // Tunggu sebentar sebelum menghapus
       isDeleting = true;
-      setTimeout(typeEffect, 800);
-    } else if (isDeleting && index === 0) {
-      // Mulai menulis ulang setelah menghapus
+      setTimeout(typeEffect, 1000); // Tunggu 1 detik sebelum mulai menghapus
+    } 
+    // Jika sudah selesai menghapus, mulai mengetik lagi
+    else if (isDeleting && index === 0) {
       isDeleting = false;
-      setTimeout(typeEffect, 500);
-    } else {
-      // Kecepatan mengetik atau menghapus
-      setTimeout(typeEffect, 100);
+      setTimeout(typeEffect, 500); // Tunggu 0.5 detik sebelum mulai mengetik lagi
+    } 
+    // Kecepatan mengetik dan menghapus
+    else {
+      setTimeout(typeEffect, isDeleting ? 100 : 150);
     }
   }
 
-  // Mulai animasi mengetik
+  // Mulai animasi typing
   typeEffect();
   
   const menuBtn = document.getElementById('menu-btn');
@@ -303,4 +304,4 @@
   </script>
 </body>
 
-</html>
+        </html>
