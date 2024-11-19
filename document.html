@@ -92,6 +92,23 @@
             background-color: #1c1917;
             border-left: 5px solid #f59e0b;
         }
+        
+              .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #059669;
+            transform: scale(1.1);
+        }
+        
         footer {
             text-align: center;
             margin-top: 25px;
@@ -120,6 +137,10 @@
         .code-block code .variable {
             color: #facc15;
         }
+        
+        #sidebar {
+      z-index: 50;
+    }
     </style>
 </head>
 <body>
@@ -128,7 +149,7 @@
         <div class="info">
             <p><strong>📢 Info:</strong> Explore the usage of this API with various programming languages and cURL.</p>
         </div>
-
+                       
         <!-- Language Selector -->
         <label for="language-selector"><strong>🔧 Select Language:</strong></label>
         <select id="language-selector" onchange="showCode(this.value)">
@@ -269,11 +290,16 @@ fetch_data()
         </div>
     </div>
 
+    <!-- Back Button -->
+        <a href="index.html" class="back-button" title="Return to Homepage">← Back to Homepage</a>
+    </div>
+
     <footer>
         Create By © 2024 <a href="#">Line Developer</a>
     </footer>
 
     <script>
+        
         function showCode(selectedId) {
             const allCodeBlocks = document.querySelectorAll('.code-block');
             allCodeBlocks.forEach(block => block.classList.remove('active'));
