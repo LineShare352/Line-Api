@@ -30,6 +30,22 @@
       padding: 5px;
       border-radius: 50%;
     }
+    
+  @keyframes fade-in-scale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .fade-in-scale {
+    animation: fade-in-scale 0.3s ease-out;
+  }
+    
   </style>
 </head>
 
@@ -63,28 +79,37 @@
   </header>
 
 <!-- Chat Box -->
-<div id="chat-box" class="absolute right-6 top-20 bg-white text-black w-72 rounded-lg shadow-lg hidden">
-  <!-- Header -->
-  <div class="bg-indigo-800 text-white p-4 flex justify-between items-center">
-    <h2 class="text-xl font-bold">Chat Room</h2>
-    <button id="close-btn" class="text-white font-bold">×</button>
-  </div>
-  <!-- Chat Content -->
-  <div id="messages" class="p-4 space-y-4 h-64 overflow-y-auto">
-    <div class="flex items-start space-x-2">
-      <img src="https://pomf2.lain.la/f/zs94ruin.jpg" alt="Logo" class="w-8 h-8 rounded-full">
-      <div>
-        <p class="font-bold">Line</p>
-        <p>Hai Selamat Datang</p>
+<div id="chat-box" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+  <div class="bg-white text-black w-11/12 max-w-lg rounded-lg shadow-lg">
+    <!-- Header -->
+    <div class="bg-indigo-800 text-white p-4 flex justify-between items-center rounded-t-lg">
+      <h2 class="text-xl font-bold">Chat Room Line</h2>
+      <button id="close-btn" class="text-white font-bold hover:bg-red-500 hover:text-white rounded-full p-2 transition-all">×</button>
+    </div>
+    
+    <!-- Chat Content -->
+    <div id="messages" class="p-4 space-y-4 h-72 overflow-y-auto bg-gray-100">
+      <!-- Default Welcome Message -->
+      <div class="flex items-start space-x-3">
+        <img src="https://pomf2.lain.la/f/zs94ruin.jpg" alt="Logo" class="w-10 h-10 rounded-full">
+        <div class="bg-indigo-100 p-3 rounded-lg">
+          <p class="font-bold">Line</p>
+          <p>Hai Selamat Datang</p>
+        </div>
       </div>
     </div>
+    
+    <!-- Input Chat -->
+    <form id="chat-form" class="bg-white p-4 flex flex-col items-center space-y-2 rounded-b-lg">
+      <input id="username" type="text" placeholder="Masukkan Username" 
+             class="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+      <input id="message" type="text" placeholder="Tulis pesan..." 
+             class="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+      <button type="submit" class="bg-indigo-800 text-white px-4 py-2 rounded-md w-full font-medium hover:bg-indigo-700 transition-all">
+        Kirim
+      </button>
+    </form>
   </div>
-  <!-- Input Chat -->
-  <form id="chat-form" class="bg-gray-100 p-4 flex flex-col items-center space-y-2">
-    <input id="username" type="text" placeholder="Masukkan Username" class="p-2 border rounded w-11/12" required />
-    <input id="message" type="text" placeholder="Tulis pesan..." class="p-2 border rounded w-11/12" required />
-    <button type="submit" class="bg-indigo-800 text-white px-4 py-2 rounded w-11/12">Kirim</button>
-  </form>
 </div>
 
   <!-- Sidebar Overlay -->
@@ -237,50 +262,82 @@
   <script>
   
     const messageBtn = document.getElementById("message-btn");
-    const chatBox = document.getElementById("chat-box");
-    const closeBtn = document.getElementById("close-btn");
-    const chatForm = document.getElementById("chat-form");
-    const messages = document.getElementById("messages");
-    const usernameInput = document.getElementById("username");
-    const messageInput = document.getElementById("message");
+const chatBox = document.getElementById("chat-box");
+const closeBtn = document.getElementById("close-btn");
+const chatForm = document.getElementById("chat-form");
+const messages = document.getElementById("messages");
+const usernameInput = document.getElementById("username");
+const messageInput = document.getElementById("message");
 
-    // Tampilkan kotak chat
-    messageBtn.addEventListener("click", () => {
-      chatBox.classList.remove("hidden");
-    });
+// Fungsi untuk menyimpan pesan ke localStorage
+function saveMessagesToLocalStorage(messageData) {
+  const storedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  storedMessages.push(messageData);
+  localStorage.setItem("chatMessages", JSON.stringify(storedMessages));
+}
 
-    // Sembunyikan kotak chat
-    closeBtn.addEventListener("click", () => {
-      chatBox.classList.add("hidden");
-    });
+// Fungsi untuk memuat pesan dari localStorage
+function loadMessagesFromLocalStorage() {
+  const storedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  storedMessages.forEach(({ username, message, avatar }) => {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("flex", "items-start", "space-x-2");
+    messageElement.innerHTML = `
+      <img src="${avatar}" alt="${username}" class="w-8 h-8 rounded-full" />
+      <div>
+        <p class="font-bold">${username}</p>
+        <p>${message}</p>
+      </div>
+    `;
+    messages.appendChild(messageElement);
+  });
+}
 
-    // Tambahkan pesan ke chat
-    chatForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+// Tampilkan kotak chat
+messageBtn.addEventListener("click", () => {
+  chatBox.classList.remove("hidden");
+});
 
-      const username = usernameInput.value.trim();
-      const message = messageInput.value.trim();
+// Sembunyikan kotak chat
+closeBtn.addEventListener("click", () => {
+  chatBox.classList.add("hidden");
+});
 
-      if (username && message) {
-        const messageElement = document.createElement("div");
-        messageElement.classList.add("flex", "items-start", "space-x-2");
-        messageElement.innerHTML = `
-          <img src="https://ui-avatars.com/api/?name=${username}" alt="${username}" class="w-8 h-8 rounded-full" />
-          <div>
-            <p class="font-bold">${username}</p>
-            <p>${message}</p>
-          </div>
-        `;
+// Tambahkan pesan ke chat
+chatForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-        messages.appendChild(messageElement);
+  const username = usernameInput.value.trim();
+  const message = messageInput.value.trim();
+  const avatar = `https://ui-avatars.com/api/?name=${username}`;
 
-        // Auto-scroll ke bawah
-        messages.scrollTop = messages.scrollHeight;
+  if (username && message) {
+    // Tambahkan pesan baru ke UI
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("flex", "items-start", "space-x-2");
+    messageElement.innerHTML = `
+      <img src="${avatar}" alt="${username}" class="w-8 h-8 rounded-full" />
+      <div>
+        <p class="font-bold">${username}</p>
+        <p>${message}</p>
+      </div>
+    `;
 
-        // Bersihkan input
-        messageInput.value = "";
-      }
-    });
+    messages.appendChild(messageElement);
+
+    // Simpan pesan ke localStorage
+    saveMessagesToLocalStorage({ username, message, avatar });
+
+    // Auto-scroll ke bawah
+    messages.scrollTop = messages.scrollHeight;
+
+    // Bersihkan input
+    messageInput.value = "";
+  }
+});
+
+// Muat pesan yang tersimpan saat halaman dimuat
+loadMessagesFromLocalStorage();
   
   const textElement = document.getElementById("animated-text");
   const text = "Line Api's"; // Teks yang akan dianimasikan
