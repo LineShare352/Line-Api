@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Line AI</title>
+  <title>Chat WA Style</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     /* General Styles */
@@ -29,6 +30,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       overflow: hidden;
+      position: relative;
     }
 
     /* Header Section */
@@ -63,15 +65,9 @@
       color: #b5d3c6;
     }
 
-    .chat-header button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1rem;
+    .chat-header .menu-button {
+      font-size: 1.5rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     /* Chat Messages */
@@ -80,30 +76,39 @@
       padding: 15px;
       overflow-y: auto;
       background: #efeae2;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .message {
-      margin-bottom: 15px;
       max-width: 70%;
       padding: 10px 15px;
       border-radius: 8px;
       font-size: 0.9rem;
       word-wrap: break-word;
+      display: flex;
+      flex-direction: column;
     }
 
     .user-message {
       background: #dcf8c6;
       align-self: flex-end;
-      text-align: left;
       border-radius: 8px 8px 0 8px;
     }
 
     .ai-message {
       background: #ffffff;
       align-self: flex-start;
-      text-align: left;
       border-radius: 8px 8px 8px 0;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .message-time {
+      font-size: 0.7rem;
+      color: #999;
+      align-self: flex-end;
+      margin-top: 5px;
     }
 
     /* Chat Input */
@@ -144,43 +149,31 @@
     .chat-input button:active {
       transform: scale(0.9);
     }
-
-    /* Scrollbar Styles */
-    .chat-messages::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 5px;
-    }
   </style>
 </head>
 <body>
   <div class="chatbox">
-    <!-- Header Section -->
     <div class="chat-header">
-      <button onclick="goToHome()">❮</button>
+      <i class="fas fa-arrow-left" onclick="goToHome()"></i>
       <img src="https://pomf2.lain.la/f/ttokvts.jpg" alt="Profile">
       <div class="profile-info">
         <h1>Line AI</h1>
         <p>Online</p>
       </div>
+      <i class="fas fa-ellipsis-v menu-button"></i>
     </div>
 
-    <!-- Messages Section -->
     <div id="chatboxMessages" class="chat-messages"></div>
 
-    <!-- Input Section -->
     <div class="chat-input">
       <input type="text" id="userInput" placeholder="Ketik pesan Anda...">
-      <button onclick="sendMessage()">&#x276F;</button>
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 
   <script>
     function goToHome() {
-      window.location.href = 'index.html'; // Redirects to home page
+      window.location.href = 'index.html';
     }
 
     async function sendMessage() {
@@ -188,52 +181,49 @@
       if (input.trim() === '') return;
 
       const messagesContainer = document.getElementById('chatboxMessages');
+      const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      // Add user message
+      // Tambahkan pesan pengguna
       const userMessage = document.createElement('div');
       userMessage.classList.add('message', 'user-message');
-      userMessage.textContent = input;
+      userMessage.innerHTML = `${input}<div class="message-time">${currentTime}</div>`;
       messagesContainer.appendChild(userMessage);
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // Clear input field
       document.getElementById('userInput').value = '';
 
-      // Show typing indicator
+      // Tampilkan indikator mengetik
       const typingIndicator = document.createElement('div');
       typingIndicator.classList.add('message', 'ai-message');
       typingIndicator.textContent = 'Mengetik...';
       messagesContainer.appendChild(typingIndicator);
+
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
       try {
-        // Simulate AI response
-        const response = await axios.post('https://luminai.my.id/', {
-          content: input,
-          cName: 'LineAja',
-          cID: 'LineAja1iMSwjx',
-        });
+        const baseURL = 'https://aemt.uk.to/prompt/gpt';
+        const prompt = encodeURIComponent('Saya adalah Line, sebuah asisten virtual yang diciptakan oleh Wira. Saya di sini untuk membantu menjawab pertanyaan dan memberikan informasi yang Anda butuhkan. Ada yang bisa saya bantu hari ini?');
+        const text = encodeURIComponent(input);
+        const response = await axios.get(`${baseURL}?prompt=${prompt}&text=${text}`);
 
-        // Remove typing indicator
         typingIndicator.remove();
 
-        // Add AI message
-        const aiMessage = document.createElement('div');
-        aiMessage.classList.add('message', 'ai-message');
-        aiMessage.textContent = response.data.result;
-        messagesContainer.appendChild(aiMessage);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (response.data && response.data.result) {
+          const aiMessage = document.createElement('div');
+          aiMessage.classList.add('message', 'ai-message');
+          aiMessage.innerHTML = `${response.data.result}<div class="message-time">${currentTime}</div>`;
+          messagesContainer.appendChild(aiMessage);
+        } else {
+          throw new Error('Respons tidak valid dari server.');
+        }
       } catch (error) {
-        console.error(error);
-
-        // Show error message
         typingIndicator.remove();
         const errorMessage = document.createElement('div');
         errorMessage.classList.add('message', 'ai-message');
-        errorMessage.textContent = 'Terjadi kesalahan saat memproses pesan.';
+        errorMessage.innerHTML = `Error. Silakan coba lagi.<div class="message-time">${currentTime}</div>`;
         messagesContainer.appendChild(errorMessage);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       }
+
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
   </script>
 </body>
