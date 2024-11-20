@@ -12,7 +12,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f0f0f0;
+      background: #e5ddd5;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -25,7 +25,7 @@
       height: 90vh;
       display: flex;
       flex-direction: column;
-      background: #fff;
+      background: #ffffff;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       overflow: hidden;
@@ -74,17 +74,12 @@
       gap: 5px;
     }
 
-    .chat-header button svg {
-      width: 20px;
-      height: 20px;
-    }
-
     /* Chat Messages */
     .chat-messages {
       flex: 1;
       padding: 15px;
       overflow-y: auto;
-      background: #e5ddd5;
+      background: #efeae2;
     }
 
     .message {
@@ -100,49 +95,15 @@
       background: #dcf8c6;
       align-self: flex-end;
       text-align: left;
+      border-radius: 8px 8px 0 8px;
     }
 
     .ai-message {
-      background: #fff;
+      background: #ffffff;
       align-self: flex-start;
       text-align: left;
+      border-radius: 8px 8px 8px 0;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .typing-indicator {
-      display: flex;
-      gap: 4px;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 15px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .typing-indicator span {
-      width: 6px;
-      height: 6px;
-      background: #ccc;
-      border-radius: 50%;
-      animation: bounce 1.2s infinite ease-in-out;
-    }
-
-    .typing-indicator span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .typing-indicator span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    @keyframes bounce {
-      0%, 80%, 100% {
-        transform: scale(0);
-      }
-      40% {
-        transform: scale(1);
-      }
     }
 
     /* Chat Input */
@@ -177,15 +138,11 @@
       align-items: center;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease;
+      font-size: 1.2rem;
     }
 
     .chat-input button:active {
       transform: scale(0.9);
-    }
-
-    .chat-input button svg {
-      width: 20px;
-      height: 20px;
     }
 
     /* Scrollbar Styles */
@@ -203,11 +160,7 @@
   <div class="chatbox">
     <!-- Header Section -->
     <div class="chat-header">
-      <button onclick="goToHome()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+      <button onclick="goToHome()">❮</button>
       <img src="https://pomf2.lain.la/f/ttokvts.jpg" alt="Profile">
       <div class="profile-info">
         <h1>Chat AI</h1>
@@ -221,11 +174,7 @@
     <!-- Input Section -->
     <div class="chat-input">
       <input type="text" id="userInput" placeholder="Ketik pesan Anda...">
-      <button onclick="sendMessage()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17l4-4m0 0l4-4m-4 4H4m16 0h-8" />
-        </svg>
-      </button>
+      <button onclick="sendMessage()">&#x276F;</button>
     </div>
   </div>
 
