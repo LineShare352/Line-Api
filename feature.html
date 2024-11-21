@@ -109,7 +109,7 @@
           <p class="feature-title">Chat AI</p>
           <p class="feature-desc">Interaktif AI untuk membantu kebutuhan Anda.</p>
           <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/chat-ai')">Try</button>
+            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
           </div>
         </div>
         <div class="feature-card">
@@ -117,7 +117,7 @@
           <p class="feature-title">Customization</p>
           <p class="feature-desc">Sesuaikan fitur sesuai kebutuhan Anda.</p>
           <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/customization')">Try</button>
+            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@
           <p class="feature-title">Integration</p>
           <p class="feature-desc">Terhubung dengan platform lainnya.</p>
           <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/integration')">Try</button>
+            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
           </div>
         </div>
         <div class="feature-card">
@@ -140,7 +140,7 @@
           <p class="feature-title">Analytics</p>
           <p class="feature-desc">Dapatkan wawasan mendalam dari data Anda.</p>
           <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/analytics')">Try</button>
+            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
           </div>
         </div>
       </div>
@@ -164,6 +164,12 @@
 
     function goBackToIndex() {
       window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>catch(error => {
+          console.error("Error fetching file:", error);
+        });
     }
   </script>
 </body>
