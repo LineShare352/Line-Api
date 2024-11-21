@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f4f6;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #4f46e5;
+      margin-bottom: 40px;
+    }
+    .feature-group {
+      margin-bottom: 50px;
+    }
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 260px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #4f46e5;
+    }
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #3b36cb;
+    }
+    .back-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #f43f5e, #f59e0b);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .back-button:hover {
+      background: linear-gradient(90deg, #e11d48, #d97706);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Our Features</h1>
+    
+    <!-- Core Features -->
+    <div class="feature-group">
+      <h2 style="font-size: 1.75rem; margin-bottom: 20px;">Core Features</h2>
+      <div class="feature-list">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <p class="feature-title">Chat AI</p>
+          <p class="feature-desc">Interaktif AI untuk membantu kebutuhan Anda.</p>
+          <div class="button-group">
+            <button class="button" onclick="redirectToApi('/features/chat-ai')">Try</button>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <p class="feature-title">Customization</p>
+          <p class="feature-desc">Sesuaikan fitur sesuai kebutuhan Anda.</p>
+          <div class="button-group">
+            <button class="button" onclick="redirectToApi('/features/customization')">Try</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Advanced Features -->
+    <div class="feature-group">
+      <h2 style="font-size: 1.75rem; margin-bottom: 20px;">Advanced Features</h2>
+      <div class="feature-list">
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <p class="feature-title">Integration</p>
+          <p class="feature-desc">Terhubung dengan platform lainnya.</p>
+          <div class="button-group">
+            <button class="button" onclick="redirectToApi('/features/integration')">Try</button>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <p class="feature-title">Analytics</p>
+          <p class="feature-desc">Dapatkan wawasan mendalam dari data Anda.</p>
+          <div class="button-group">
+            <button class="button" onclick="redirectToApi('/features/analytics')">Try</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Index Button -->
+    <button class="back-button" onclick="goBackToIndex()">Kembali ke Beranda</button>
+  </div>
+
+  <script>
+    function redirectToApi(endpoint) {
+      fetch(endpoint)
+        .then(response => response.json())
+        .then(data => {
+          alert(JSON.stringify(data, null, 2));
+        })
+        .catch(error => {
+          console.error("Error fetching API:", error);
+        });
+    }
+
+    function goBackToIndex() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

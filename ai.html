@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat WA Style</title>
+  <title>Chat UI Modernized</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -13,43 +13,56 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: #f3f4f6;
+      background: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       overflow: hidden;
+      animation: backgroundMove 15s ease-in-out infinite;
+    }
+
+    @keyframes backgroundMove {
+      0% { background: linear-gradient(135deg, #FF8C00, #FF6F61); }
+      50% { background: linear-gradient(135deg, #FF6F61, #FF8C00); }
+      100% { background: linear-gradient(135deg, #FF8C00, #FF6F61); }
     }
 
     .chatbox {
       width: 100%;
-      max-width: 450px;
-      height: 90vh;
+      max-width: 480px;
+      height: 95vh;
       display: flex;
       flex-direction: column;
-      background: linear-gradient(135deg, #FF79C6, #8BE9FD);
-      border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .chatbox:hover {
+      transform: scale(1.03);
     }
 
     /* Header Section */
     .chat-header {
       display: flex;
       align-items: center;
-      padding: 15px;
-      background: #50C878;
+      padding: 20px;
+      background: #4CAF50;
       color: white;
-      border-bottom: 2px solid #f1f1f1;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid #e1e1e1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .chat-header img {
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      margin-right: 15px;
+      margin-right: 20px;
+      border: 2px solid white;
     }
 
     .chat-header .profile-info {
@@ -58,64 +71,64 @@
 
     .chat-header h1 {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 600;
     }
 
     .chat-header p {
       margin: 0;
-      font-size: 0.8rem;
-      color: #d3e3e2;
+      font-size: 0.85rem;
+      color: #eaeaea;
     }
 
     .chat-header .menu-button {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
 
     .chat-header .menu-button:hover {
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
 
     /* Chat Messages */
     .chat-messages {
       flex: 1;
-      padding: 15px;
+      padding: 20px;
       overflow-y: auto;
-      background: #f9f9f9;
+      background: #fafafa;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     .message {
-      max-width: 70%;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 0.95rem;
+      max-width: 75%;
+      padding: 14px 22px;
+      border-radius: 15px;
+      font-size: 1rem;
       word-wrap: break-word;
       display: flex;
       flex-direction: column;
     }
 
     .user-message {
-      background: #dcf8c6;
+      background: #DCF8C6;
       align-self: flex-end;
-      border-radius: 12px 12px 0 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 18px 18px 0 18px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .ai-message {
       background: #ffffff;
       align-self: flex-start;
-      border-radius: 12px 12px 12px 0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 18px 18px 18px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .message-time {
-      font-size: 0.7rem;
-      color: #b5d3c6;
+      font-size: 0.75rem;
+      color: #b0b0b0;
       align-self: flex-end;
       margin-top: 5px;
     }
@@ -124,42 +137,42 @@
     .chat-input {
       display: flex;
       align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: #f1f1f1;
+      gap: 18px;
+      padding: 18px;
+      background: #fff;
       border-top: 2px solid #ddd;
       box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .chat-input input {
       flex: 1;
-      padding: 12px 18px;
-      font-size: 1rem;
+      padding: 14px 20px;
+      font-size: 1.1rem;
       border: none;
       border-radius: 25px;
       outline: none;
-      background-color: #e6e6e6;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
+      background-color: #e0e0e0;
+      transition: background-color 0.3s ease, box-shadow 0.2s ease;
     }
 
     .chat-input input:focus {
       background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .chat-input button {
       background: #4CAF50;
       border: none;
       color: #fff;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background-color 0.3s, transform 0.2s;
-      font-size: 1.2rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1.5rem;
     }
 
     .chat-input button:hover {
@@ -172,18 +185,18 @@
 
     /* Typing Indicator */
     .typing-indicator {
-      font-size: 0.85rem;
-      color: #a6a6a6;
+      font-size: 0.9rem;
+      color: #9b9b9b;
       display: flex;
-      gap: 5px;
+      gap: 6px;
     }
 
     .typing-indicator .dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background-color: #4CAF50;
-      animation: typing 1.2s infinite;
+      animation: typing 1.2s infinite ease;
     }
 
     .typing-indicator .dot:nth-child(1) {
