@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Line API</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes border-zoom {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .animate-border-zoom {
+      animation: border-zoom 3s infinite;
+    }
+
+    .header-logo {
+      border: 2px solid white;
+      padding: 5px;
+      border-radius: 50%;
+    }
+    
+  @keyframes fade-in-scale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .fade-in-scale {
+    animation: fade-in-scale 0.3s ease-out;
+  }
+    
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-purple-600 to-indigo-800 text-white min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-indigo-800 text-white py-4 px-6 shadow-lg flex justify-between items-center transition-all">
+    <div class="flex items-center">
+      <!-- Foto dengan border yang terus zoom -->
+      <div class="relative w-16 h-16">
+        <img src="https://pomf2.lain.la/f/zs94ruin.jpg" alt="Logo"
+          class="absolute inset-0 w-full h-full object-cover rounded-full border-4 border-white header-logo animate-border-zoom" />
+      </div>
+      <!-- Teks Line API -->
+      <h1 id="animated-text" class="ml-4 text-3xl font-extrabold tracking-wide">Line API</h1>
+    </div>
+
+    <!-- Bagian kanan -->
+    <div class="flex items-center space-x-4">
+      <!-- Ikon pesan -->
+      <button id="message-btn" class="relative text-white text-3xl font-bold hover:text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M8 10h.01M12 10h.01M16 10h.01M21 16.5a2.5 2.5 0 01-2.5 2.5H6.5A2.5 2.5 0 014 16.5V7.5A2.5 2.5 0 016.5 5h12A2.5 2.5 0 0121 7.5v9z" />
+        </svg>
+        <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">5</span>
+      </button>
+
+      <!-- Menu button -->
+      <button id="menu-btn" class="text-white text-3xl font-bold hover:text-gray-300 lg:hidden">≡</button>
+    </div>
+  </header>
+
+<!-- Chat Box -->
+<div id="chat-box" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+  <div class="bg-white text-black w-11/12 max-w-lg rounded-lg shadow-lg">
+    <!-- Header -->
+    <div class="bg-indigo-800 text-white p-4 flex justify-between items-center rounded-t-lg">
+      <h2 class="text-xl font-bold">Chat Room Line</h2>
+      <button id="close-btn" class="text-white font-bold hover:bg-red-500 hover:text-white rounded-full p-2 transition-all">×</button>
+    </div>
+    
+    <!-- Chat Content -->
+    <div id="messages" class="p-4 space-y-4 h-72 overflow-y-auto bg-gray-100">
+      <!-- Default Welcome Message -->
+      <div class="flex items-start space-x-3">
+        <img src="https://pomf2.lain.la/f/zs94ruin.jpg" alt="Logo" class="w-10 h-10 rounded-full">
+        <div class="bg-indigo-100 p-3 rounded-lg">
+          <p class="font-bold">Line</p>
+          <p>Hai Selamat Datang</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Input Chat -->
+    <form id="chat-form" class="bg-white p-4 flex flex-col items-center space-y-2 rounded-b-lg">
+      <input id="username" type="text" placeholder="Masukkan Username" 
+             class="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+      <input id="message" type="text" placeholder="Tulis pesan..." 
+             class="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+      <button type="submit" class="bg-indigo-800 text-white px-4 py-2 rounded-md w-full font-medium hover:bg-indigo-700 transition-all">
+        Kirim
+      </button>
+    </form>
+  </div>
+</div>
+
+  <!-- Sidebar Overlay -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside id="sidebar"
+    class="fixed top-0 left-0 w-64 min-h-screen bg-indigo-900 text-white p-6 shadow-lg transform -translate-x-full transition-transform duration-300 lg:translate-x-0">
+    <div class="flex flex-col items-center mb-6">
+      <img src="https://pomf2.lain.la/f/zs94ruin.jpg" alt="Logo"
+        class="w-20 h-20 rounded-full border-4 border-white shadow-lg mb-4 hover:scale-105 transition-transform duration-300" />
+      <h1 class="text-2xl font-bold tracking-wide mb-1">Line API</h1>
+      <p class="text-sm text-gray-400 italic">Developer</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <p class="text-gray-400 text-xs uppercase tracking-wide mb-4">Main</p>
+      <ul class="space-y-3">
+        <li>
+          <a href="./public/index.html"
+            class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7-9 7-9-7z" />
+            </svg>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="document.html#documentation"
+            class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5h6m-6 4h6m-6 4h6m-6 4h6" />
+            </svg>
+            Documentation
+          </a>
+        </li>
+        <li>
+        
+          <a href="index.html#endpoints"
+            class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Endpoints
+          </a>
+        </li>
+      </ul>
+
+      <p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">Analytics</p>
+      <ul class="space-y-3">
+        <li>
+          <a href="#usage"
+            class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            Usage Statistics
+          </a>
+        </li>
+      </ul>
+
+<p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">Settings</p>
+<ul class="space-y-3">
+  <li>
+    <a href="./public/auth.html"
+      class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1-.9-2-2-2s-2 .9-2 2c0 1.1.9 2 2 2s2-.9 2-2zm0 6.5c2.2 0 4-1.8 4-4 0-1.1-.9-2-2-2s-2 .9-2 2c0 1.1.9 2 2 2zM6.5 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c1.7 0 3-1.3 3-3s-1.3-3-3-3z" />
+      </svg>
+      Authentication
+    </a>
+  </li>
+  <li>
+    <a href="#settings"
+      class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.4 15.6a8 8 0 1 1 0-7.2m-3.2 7.2L9.6 9.6m0 0l-5.2-5.2M12 3v1m4.2 1.2l-.8.8m-9.2-.8L6.8 3" />
+      </svg>
+      Settings
+    </a>
+  </li>
+</ul>
+
+<p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">CREDIT</p>
+<ul class="space-y-3">
+  <!-- Pengembang -->
+  <li>
+    <a href="./public/cr.html"
+      class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm1 2h-2v6h2v-6zm1 0c1.1 0 2 .9 2 2v4h2v-4c0-2.21-1.79-4-4-4zm-4 0c-1.1 0-2 .9-2 2v4h-2v-4c0-2.21 1.79-4 4-4z"/>
+      </svg>
+      Pengembang
+    </a>
+  </li>
+
+<p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">FEATURE</p>
+<ul class="space-y-3">
+  <li>
+    <a href="./public/feature.html"
+      class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+      <!-- Ikon fitur (ubah menjadi ikon bintang atau fitur umum) -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+      Feature
+    </a>
+  </li>
+</ul>
+
+<p class="text-gray-400 text-xs uppercase tracking-wide mt-8 mb-4">CHAT AI</p>
+<ul class="space-y-3">
+  <!-- Chat AI -->
+  <li>
+    <a href="./public/ai.html"
+      class="flex items-center gap-3 py-2 px-4 rounded-lg bg-indigo-800 hover:bg-indigo-700 transition-all duration-300 text-gray-200 hover:shadow-lg">
+      <!-- Ikon chat atau AI -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8a2 2 0 012-2h2m3 0h4m-6 0a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+      </svg>
+      Chat AI
+    </a>
+  </li>
+</ul>
+</nav>
+</aside>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6 fade-in">
+    <!-- Welcome Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mb-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Welcome to Line Api's</h2>
+      <p class="mb-4">Selamat datang di website Line Api!</p>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Gratis</li>
+        <li>Tanpa Login</li>
+        <li>Tanpa API Key</li>
+        <li>Unlimited Request</li>
+      </ul>
+    </div>
+
+    <!-- Battery Section -->
+    <div id="battery-info"
+      class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Battery Status</h2>
+      <div class="flex items-center space-x-4">
+        <div id="battery-icon" class="text-4xl">
+          🔋
+        </div>
+        <p id="battery-text" class="text-gray-600 text-lg">Memuat informasi baterai...</p>
+      </div>
+    </div>
+
+    <!-- IP Address Section -->
+    <div id="ip-info"
+      class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">IP Address</h2>
+      <p id="ip-text" class="text-gray-600 text-lg">Memuat informasi IP....</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-white rounded-lg shadow-lg p-6 text-gray-800 mt-6 transition-all duration-500 hover:shadow-2xl">
+      <h2 class="text-blue-600 text-2xl font-bold mb-4">Fitur Utama</h2>
+      <ul class="list-disc list-inside text-gray-600">
+        <li>Integrasi API dengan mudah</li>
+        <li>Statistik real-time</li>
+        <li>Kompatibilitas tinggi untuk berbagai platform</li>
+        <li>Respon cepat dengan latensi rendah</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-800 text-center text-sm py-4 text-gray-300 fade-in">
+    © 2024 Line Api's. All rights reserved.
+  </footer>
+
+  <script>
+  
+    const messageBtn = document.getElementById("message-btn");
+const chatBox = document.getElementById("chat-box");
+const closeBtn = document.getElementById("close-btn");
+const chatForm = document.getElementById("chat-form");
+const messages = document.getElementById("messages");
+const usernameInput = document.getElementById("username");
+const messageInput = document.getElementById("message");
+
+// Fungsi untuk menyimpan pesan ke localStorage
+function saveMessagesToLocalStorage(messageData) {
+  const storedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  storedMessages.push(messageData);
+  localStorage.setItem("chatMessages", JSON.stringify(storedMessages));
+}
+
+// Fungsi untuk memuat pesan dari localStorage
+function loadMessagesFromLocalStorage() {
+  const storedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+  storedMessages.forEach(({ username, message, avatar }) => {
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("flex", "items-start", "space-x-2");
+    messageElement.innerHTML = `
+      <img src="${avatar}" alt="${username}" class="w-8 h-8 rounded-full" />
+      <div>
+        <p class="font-bold">${username}</p>
+        <p>${message}</p>
+      </div>
+    `;
+    messages.appendChild(messageElement);
+  });
+}
+
+// Tampilkan kotak chat
+messageBtn.addEventListener("click", () => {
+  chatBox.classList.remove("hidden");
+});
+
+// Sembunyikan kotak chat
+closeBtn.addEventListener("click", () => {
+  chatBox.classList.add("hidden");
+});
+
+// Tambahkan pesan ke chat
+chatForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const username = usernameInput.value.trim();
+  const message = messageInput.value.trim();
+  const avatar = `https://ui-avatars.com/api/?name=${username}`;
+
+  if (username && message) {
+    // Tambahkan pesan baru ke UI
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("flex", "items-start", "space-x-2");
+    messageElement.innerHTML = `
+      <img src="${avatar}" alt="${username}" class="w-8 h-8 rounded-full" />
+      <div>
+        <p class="font-bold">${username}</p>
+        <p>${message}</p>
+      </div>
+    `;
+
+    messages.appendChild(messageElement);
+
+    // Simpan pesan ke localStorage
+    saveMessagesToLocalStorage({ username, message, avatar });
+
+    // Auto-scroll ke bawah
+    messages.scrollTop = messages.scrollHeight;
+
+    // Bersihkan input
+    messageInput.value = "";
+  }
+});
+
+// Muat pesan yang tersimpan saat halaman dimuat
+loadMessagesFromLocalStorage();
+  
+  const textElement = document.getElementById("animated-text");
+  const text = "Line Api's"; // Teks yang akan dianimasikan
+  let index = 0; // Indeks karakter saat ini
+  let isDeleting = false; // Status mengetik atau menghapus
+
+  function typeEffect() {
+    if (isDeleting) {
+      // Jika menghapus, kurangi panjang teks
+      textElement.textContent = text.slice(0, index--);
+    } else {
+      // Jika mengetik, tambahkan panjang teks
+      textElement.textContent = text.slice(0, index++);
+    }
+
+    // Jika sudah selesai mengetik, tunggu sebelum menghapus
+    if (!isDeleting && index > text.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1000); // Tunggu 1 detik sebelum mulai menghapus
+    } 
+    // Jika sudah selesai menghapus, mulai mengetik lagi
+    else if (isDeleting && index === 0) {
+      isDeleting = false;
+      setTimeout(typeEffect, 500); // Tunggu 0.5 detik sebelum mulai mengetik lagi
+    } 
+    // Kecepatan mengetik dan menghapus
+    else {
+      setTimeout(typeEffect, isDeleting ? 100 : 150);
+    }
+  }
+
+  // Mulai animasi typing
+  typeEffect();
+  
+  const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    // Toggle sidebar on menu button click
+    menuBtn.addEventListener('click', () => {
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+      }
+    });
+
+    // Close sidebar when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && e.target !== menuBtn) {
+        sidebar.classList.add('-translate-x-full');
+      }
+    });
+  
+    // Mendapatkan informasi baterai
+    async function getBatteryInfo() {
+      if (navigator.getBattery) {
+        const battery = await navigator.getBattery();
+        const batteryText = document.getElementById("battery-text");
+        const batteryIcon = document.getElementById("battery-icon");
+
+        function updateBatteryStatus() {
+          const level = Math.round(battery.level * 100);
+          batteryText.textContent = `Baterai: ${level}% ${
+            battery.charging ? "(Sedang mengisi daya)" : "(Tidak mengisi daya)"
+          }`;
+
+          if (battery.charging) {
+            batteryIcon.textContent = "⚡";
+            batteryIcon.classList.add("text-yellow-500", "pulse");
+          } else {
+            batteryIcon.textContent = "🔋";
+            batteryIcon.classList.remove("text-yellow-500", "pulse");
+          }
+        }
+
+        updateBatteryStatus();
+        battery.addEventListener("levelchange", updateBatteryStatus);
+        battery.addEventListener("chargingchange", updateBatteryStatus);
+      } else {
+        document.getElementById("battery-text").textContent =
+          "Informasi baterai tidak didukung pada perangkat ini.";
+      }
+    }
+
+    // Mendapatkan informasi IP Address
+    async function getIpInfo() {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+        document.getElementById("ip-text").textContent = `IP Address: ${data.ip}`;
+      } catch (error) {
+        document.getElementById("ip-text").textContent =
+          "Gagal memuat informasi IP Address.";
+      }
+    }
+
+    // Hitung kunjungan
+    function countVisitors() {
+      const visitCount = localStorage.getItem("visitCount");
+      const newCount = visitCount ? parseInt(visitCount) + 1 : 1;
+      localStorage.setItem("visitCount", newCount);
+      console.log(`Jumlah kunjungan: ${newCount}`);
+    }
+
+    // Jalankan semua fungsi
+    getBatteryInfo();
+    getIpInfo();
+    countVisitors();
+  </script>
+</body>
+
+</html>
