@@ -40,13 +40,13 @@ app.get('/api/google.js', async (req, res) => {
         }
         return res.json({
             status: false,
-            creator: "Your Name or Creator's Info",  // Add creator info in case of no items
+            creator: "Hello Line",  
         });
     } catch (err) {
         console.error("Error in Google API:", err.message);
         return res.json({
             status: false,
-            creator: "Your Name or Creator's Info",  // Add creator info in case of an error
+            creator: "Hello Line",  
             data: { error: err.message },
         });
     }
