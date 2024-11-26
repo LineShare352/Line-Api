@@ -18,7 +18,7 @@ app.get('/api/google.js', async (req, res) => {
     if (!text) {
         return res.json({
             status: false,
-            data: 'Contoh penggunaan: ?text=halo',
+            data: 'Contoh penggunaan: ?text=Oline Jkt48',
         });
     }
     const query = encodeURIComponent(text);
