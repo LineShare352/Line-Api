@@ -24,16 +24,21 @@
       color: #4f46e5;
       margin-bottom: 40px;
     }
-    .feature-group {
+    .category-section {
       margin-bottom: 50px;
     }
-    .feature-list {
+    .category-section h2 {
+      font-size: 1.75rem;
+      color: #4f46e5;
+      margin-bottom: 20px;
+    }
+    .category-cards {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-    .feature-card {
+    .card {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -41,33 +46,22 @@
       padding: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
-      position: relative;
     }
-    .feature-card:hover {
+    .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #4f46e5;
-    }
-    .feature-title {
+    .card h3 {
       font-size: 1.25rem;
       font-weight: bold;
       margin-bottom: 8px;
     }
-    .feature-desc {
+    .card p {
       font-size: 0.9rem;
       color: #555;
       margin-bottom: 15px;
     }
-    .button-group {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
-    .button {
+    .card button {
       padding: 10px 20px;
       background-color: #4f46e5;
       color: white;
@@ -77,100 +71,81 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    .button:hover {
+    .card button:hover {
       background-color: #3b36cb;
-    }
-    .back-button {
-      margin-top: 30px;
-      padding: 12px 24px;
-      background: linear-gradient(90deg, #f43f5e, #f59e0b);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .back-button:hover {
-      background: linear-gradient(90deg, #e11d48, #d97706);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Our Features</h1>
-    
-    <!-- Core Features -->
-    <div class="feature-group">
-      <h2 style="font-size: 1.75rem; margin-bottom: 20px;">Core Features</h2>
-      <div class="feature-list">
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <p class="feature-title">Chat AI</p>
-          <p class="feature-desc">Interaktif AI untuk membantu kebutuhan Anda.</p>
-          <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚙️</div>
-          <p class="feature-title">Customization</p>
-          <p class="feature-desc">Sesuaikan fitur sesuai kebutuhan Anda.</p>
-          <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Advanced Features -->
-    <div class="feature-group">
-      <h2 style="font-size: 1.75rem; margin-bottom: 20px;">Advanced Features</h2>
-      <div class="feature-list">
-        <div class="feature-card">
-          <div class="feature-icon">🌐</div>
-          <p class="feature-title">Integration</p>
-          <p class="feature-desc">Terhubung dengan platform lainnya.</p>
-          <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
-          </div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <p class="feature-title">Analytics</p>
-          <p class="feature-desc">Dapatkan wawasan mendalam dari data Anda.</p>
-          <div class="button-group">
-            <button class="button" onclick="redirectToApi('/features/express')">Try</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Back to Index Button -->
-    <button class="back-button" onclick="goBackToIndex()">Kembali ke Beranda</button>
+    <div id="features"></div>
   </div>
 
   <script>
-    function redirectToApi(endpoint) {
-      fetch(endpoint)
-        .then(response => response.json())
-        .then(data => {
-          alert(JSON.stringify(data, null, 2));
-        })
-        .catch(error => {
-          console.error("Error fetching API:", error);
-        });
+    const features = [
+      {
+        name: "Google-Search",
+        method: "GET",
+        description: "Search/google",
+        category: "Search",
+        endpoint: "../api/google.js",
+        query: "text=Kylian%20Mbappe"
+      },
+      {
+        name: "NPM Search",
+        method: "GET",
+        description: "Search/npm",
+        category: "Search",
+        endpoint: "../api/npm.js",
+        query: "text=axios"
+      },
+      {
+        name: "Wikimedia",
+        method: "GET",
+        description: "Search/wikimedia",
+        category: "Search",
+        endpoint: "../api/wikimedia.js",
+        query: "text=Harimau"
+      }
+    ];
+
+    const featureContainer = document.getElementById("features");
+
+    function createCategorySection(categoryName) {
+      const categorySection = document.createElement("div");
+      categorySection.classList.add("category-section");
+      categorySection.innerHTML = `<h2>${categoryName}</h2><div class="category-cards"></div>`;
+      return categorySection;
     }
 
-    function goBackToIndex() {
-      window.location.href = "index.html";
+    function redirectToEndpoint(endpoint, query) {
+      const fullUrl = `${endpoint}?${query}`;
+      location.href = fullUrl;
     }
-  </script>
-</body>
-</html>catch(error => {
-          console.error("Error fetching file:", error);
+
+    const categories = [...new Set(features.map((feature) => feature.category))];
+    categories.forEach((category) => {
+      const categorySection = createCategorySection(category);
+      const categoryCards = categorySection.querySelector(".category-cards");
+
+      features
+        .filter((feature) => feature.category === category)
+        .forEach((feature) => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          card.innerHTML = `
+            <h3>${feature.name}</h3>
+            <p>${feature.description}</p>
+            <button onclick="redirectToEndpoint('${feature.endpoint}', '${feature.query}')">
+              ${feature.method}
+            </button>
+          `;
+          categoryCards.appendChild(card);
         });
-    }
+
+      featureContainer.appendChild(categorySection);
+    });
   </script>
 </body>
 </html>
