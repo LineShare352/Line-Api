@@ -22,6 +22,14 @@ const features = [
     category: "Search",
     endpoint: "../api/wikimedia.js",
     query: "text=Harimau"
+  }, 
+  {
+    name: "Orkut",
+    method: "GET",
+    description: "payment/orkut",
+    category: "payment",
+    endpoint: "../api/orkut.js",
+    query: "inquiry=10000"
   }
 ];
 
