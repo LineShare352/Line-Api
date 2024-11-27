@@ -1,64 +1,88 @@
+/* Global Styling */
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f3f4f6;
+  background: linear-gradient(to bottom, #e0e7ff, #f3f4f6);
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 .container {
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 50px auto;
   padding: 20px;
   text-align: center;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  margin-bottom: 40px;
+}
+
+header img {
+  width: 80px;
+  margin-bottom: 15px;
+  animation: bounce 1.5s infinite;
 }
 
 h1 {
   font-size: 2.5rem;
   color: #4f46e5;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
-.category-section {
-  margin-bottom: 50px;
+header p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
-.category-section h2 {
-  font-size: 1.75rem;
-  color: #4f46e5;
-  margin-bottom: 20px;
-}
-
-.category-cards {
+.features-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
 }
 
 .card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 260px;
+  background: linear-gradient(145deg, #e3e6f0, #ffffff);
+  border-radius: 15px;
+  width: 280px;
   padding: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #4f46e5;
+  animation: pop 1s infinite alternate;
 }
 
 .card h3 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 8px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .card p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
   margin-bottom: 15px;
 }
@@ -68,12 +92,65 @@ h1 {
   background-color: #4f46e5;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .card button:hover {
   background-color: #3b36cb;
+}
+
+/* Back to Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s ease;
+}
+
+#back-to-top:hover {
+  background-color: #3b36cb;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #4f46e5;
+  color: white;
+  margin-top: auto;
+}
+
+footer p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }

@@ -27,6 +27,11 @@ const features = [
 
 const featureContainer = document.getElementById("features");
 
+/**
+ * Function to create a category section
+ * @param {string} categoryName - Name of the category
+ * @returns {HTMLElement} - Category section element
+ */
 function createCategorySection(categoryName) {
   const categorySection = document.createElement("div");
   categorySection.classList.add("category-section");
@@ -34,12 +39,20 @@ function createCategorySection(categoryName) {
   return categorySection;
 }
 
+/**
+ * Redirect user to the API endpoint with query parameters
+ * @param {string} endpoint - API endpoint
+ * @param {string} query - Query parameters
+ */
 function redirectToEndpoint(endpoint, query) {
   const fullUrl = `${endpoint}?${query}`;
   location.href = fullUrl;
 }
 
+// Generate unique categories
 const categories = [...new Set(features.map((feature) => feature.category))];
+
+// Create category sections and populate with cards
 categories.forEach((category) => {
   const categorySection = createCategorySection(category);
   const categoryCards = categorySection.querySelector(".category-cards");
@@ -60,4 +73,19 @@ categories.forEach((category) => {
     });
 
   featureContainer.appendChild(categorySection);
+});
+
+// Add functionality for the Back to Top button
+const backToTopButton = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+});
+
+backToTopButton.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
