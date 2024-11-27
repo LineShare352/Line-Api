@@ -17,6 +17,7 @@ app.get('/api/pinterest.js', async (req, res) => {
     if (!text) {
         return res.json({
             status: false,
+            creator: "Hello Line",  
             result: 'Contoh penggunaan: ?text=Oline Jkt48'
         });
     }
@@ -31,12 +32,14 @@ app.get('/api/pinterest.js', async (req, res) => {
         if (response.data.status !== "success") {
             return res.json({
                 status: false,
+                creator: "Hello Line",  
                 result: 'Error: API returned failure'
             });
         }
 
         return res.json({
             status: true,
+            creator: "Hello Line",  
             result: response.data.data,
         });
 
