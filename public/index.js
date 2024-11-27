@@ -5,7 +5,7 @@ const features = [
     description: "Search/google",
     category: "Search",
     endpoint: "../api/google.js",
-    query: "text=Kylian%20Mbappe"
+    query: "text=Oline%20Jkt48"
   },
   {
     name: "NPM Search",
@@ -24,13 +24,13 @@ const features = [
     query: "text=Harimau"
   }, 
   {
-    name: "Orkut",
+    name: "Pinterest",
     method: "GET",
-    description: "payment/orkut",
-    category: "payment",
-    endpoint: "../api/orkut.js",
-    query: "inquiry=10000"
-  }
+    description: "Search/pinterest",
+    category: "Search",
+    endpoint: "../api/pinterest.js",
+    query: "text=Oline%20Jkt48"
+  },
 ];
 
 const featureContainer = document.getElementById("features");
