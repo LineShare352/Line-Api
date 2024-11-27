@@ -41,12 +41,23 @@ const features = [
   },
   {
     name: "Tweet",
-    method: "GET",
-    description: "Maker/tweet",
+    method: "POST", // Ubah menjadi POST
+    description: "Generate a tweet as an image",
     category: "Maker",
     endpoint: "../api/tweet.js",
-    query: "text=Hello%20Wak"
-  }
+    payload: { // Contoh payload JSON
+        name: "John Doe",
+        username: "@johndoe",
+        tweetText: "Hello Wak!",
+        profile: "https://cdn.arifzyn.tech/f/886z70cc.jpg", // URL profil
+        image: "https://cdn.arifzyn.tech/f/886z70cc.jpg", // Kosongkan jika tidak ada gambar tambahan
+        theme: "dark",
+        retweets: 100,
+        quotes: 10,
+        likes: 500,
+        client: "Twitter for iPhone"
+    }
+    }
 ];
 
 const featureContainer = document.getElementById("features");
