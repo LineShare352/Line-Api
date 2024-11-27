@@ -31,6 +31,14 @@ const features = [
     endpoint: "../api/pinterest.js",
     query: "text=Oline%20Jkt48"
   },
+  {
+    name: "Brat",
+    method: "GET",
+    description: "Maker/brat",
+    category: "Maker",
+    endpoint: "../api/brat.js",
+    query: "text=Hello%20Wak"
+  },
 ];
 
 const featureContainer = document.getElementById("features");
