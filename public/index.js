@@ -46,7 +46,7 @@ const features = [
     category: "Maker",
     endpoint: "../api/tweet.js",
     query: "text=Hello%20Wak"
-  },
+  }
 ];
 
 const featureContainer = document.getElementById("features");
