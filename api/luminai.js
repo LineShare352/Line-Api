@@ -9,7 +9,7 @@ app.set("json spaces", 2);
 app.use(cors());
 app.use(express.json()); // Middleware untuk mem-parsing JSON
 
-app.post('/api/luminai', async (req, res) => {
+app.post('/api/luminai.js', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Request Body:", req.body);
     const { text } = req.body;
