@@ -1,13 +1,5 @@
 const features = [
   {
-    name: "Luminai",
-    method: "GET",
-    description: "Search using Luminai AI",
-    category: "AI Tools",
-    endpoint: "../api/luminai.js",
-    query: "text=Hai%20kamu"
-  }, 
-  {
     name: "Google-Search",
     method: "GET",
     description: "Search/google",
@@ -54,6 +46,14 @@ const features = [
     category: "Maker",
     endpoint: "../api/ytcomment.js",
     query: "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
+  }, 
+  {
+    name: "Luminai",
+    method: "GET",
+    description: "Search using Luminai AI",
+    category: "AI Tools",
+    endpoint: "../api/luminai.js",
+    query: "text=Hai%20kamu"
   }
 ];
 
