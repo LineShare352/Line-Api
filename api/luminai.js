@@ -7,21 +7,23 @@ const PORT = process.env.PORT || 3000;
 app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
+app.use(express.json()); // Middleware untuk mem-parsing JSON
 
-app.get('/api/luminai', async (req, res) => {
+app.post('/api/luminai', async (req, res) => {
     console.log("HTTP Method:", req.method);
-    console.log("Query Params:", req.query);
-    const { content } = req.query;
-    if (!content) {
+    console.log("Request Body:", req.body);
+    const { text } = req.body;
+
+    if (!text) {
         return res.json({
             status: false,
-            data: 'Contoh penggunaan: ?content=hai',
+            data: 'Contoh penggunaan: { "text": "halo" }',
         });
     }
 
-    const url = `https://api.siputzx.my.id/api/ai/luminai?content=${encodeURIComponent(text)}`;
+    const url = 'https://luminai.my.id/';
     try {
-        const response = await axios.get(url);
+        const response = await axios.post(url, { content: text }); // Mengirim `text` sebagai `content`
         const data = response.data;
 
         return res.json({
