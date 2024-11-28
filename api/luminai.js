@@ -15,28 +15,27 @@ app.post('/api/luminai.js', async (req, res) => {
     const { text } = req.body;
 
     if (!text) {
-        return res.json({
+        return res.status(400).json({
             status: false,
-            data: 'Contoh penggunaan: { "text": "halo" }',
+            message: 'Bad Request: Parameter "text" is required.',
         });
     }
 
     const url = 'https://luminai.my.id/';
     try {
         const response = await axios.post(url, { content: text }); // Mengirim `text` sebagai `content`
-        const data = response.data;
+        const { result } = response.data; // Mengambil `result` dari respons API Luminai
 
-        return res.json({
+        return res.status(200).json({
             status: true,
-            creator: "Hello Line",
-            data,
+            result, // Mengembalikan hasil dari API
         });
     } catch (err) {
         console.error("Error in Luminai API:", err.message);
-        return res.json({
+        return res.status(500).json({
             status: false,
-            creator: "Hello Line",
-            data: { error: err.message },
+            message: 'Internal Server Error: Failed to fetch data from Luminai API.',
+            error: err.message,
         });
     }
 });
