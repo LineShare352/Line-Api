@@ -10,29 +10,38 @@ app.use(cors());
 
 app.get("/api/blackbox.js", async (req, res) => {
   const { text } = req.query;
-  if (!text) return res.status(400).json({ error: "Mau Tanya Apa?" });
+
+  if (!text) {
+    return res.status(400).json({
+      status: false,
+      creator: "Hello Line", 
+      error: "Mau Tanya Apa?"
+    });
+  }
 
   try {
-    // Membuat data permintaan untuk API eksternal
     const requestData = {
       content: text,
       cName: "LineAja",
       cID: "LineAja1iMSwjx",
     };
 
-    // Mengirim permintaan ke Blackbox AI
     const response = await axios.post('https://luminai.my.id/', requestData);
-    const sai = response.data; // Respons utama dari API eksternal
-    const pe = sai.result; // Ekstrak hasil dari respons
-
-    // Mengembalikan hasil dalam format JSON
+    const sai = response.data; 
+    const pe = sai.result;
+    
     return res.status(200).json({
       status: true,
+      creator: "Hello Line", 
       result: pe,
     });
   } catch (e) {
     console.error("Error:", e.message);
-    res.status(500).json({ error: "Internal server error." });
+    res.status(500).json({
+      status: false,
+      creator: "Hello Line", 
+      error: "Internal server error.",
+    });
   }
 });
 
