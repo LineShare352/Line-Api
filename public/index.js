@@ -50,9 +50,17 @@ const features = [
   {
     name: "Luminai",
     method: "GET",
-    description: "Search using Luminai AI",
+    description: "AI/Lumin",
     category: "AI Tools",
-    endpoint: "../api/lumin.js",
+    endpoint: "../api/luminai.js",
+    query: "text=Hai%20kamu"
+  }, 
+  {
+    name: "Blackbox",
+    method: "GET",
+    description: "AI/Blackbox",
+    category: "AI Tools",
+    endpoint: "../api/blackbox.js",
     query: "text=Hai%20kamu"
   }
 ];
