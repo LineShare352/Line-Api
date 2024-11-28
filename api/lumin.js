@@ -8,7 +8,7 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-app.post('/api/lumin', async (req, res) => {
+app.post('/api/lumin.js', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Request Body:", req.body);
     const { text } = req.body;
