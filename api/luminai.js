@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3000;
 app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
-app.use(express.json()); // Middleware untuk mem-parsing JSON
 
 app.post('/api/luminai.js', async (req, res) => {
     console.log("HTTP Method:", req.method);
