@@ -8,7 +8,7 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-app.get("/api/lumin", async (req, res) => {
+app.get("/api/lumin.js", async (req, res) => {
   const { text } = req.query;
   if (!text) return res.status(400).json({ error: "Mau Tanya Apa?" });
 
