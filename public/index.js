@@ -1,5 +1,13 @@
 const features = [
   {
+    name: "Luminai",
+    method: "GET",
+    description: "Search using Luminai AI",
+    category: "AI Tools",
+    endpoint: "../api/ai/luminai",
+    query: "content=Hai%20Kamu"
+  }, 
+  {
     name: "Google-Search",
     method: "GET",
     description: "Search/google",
