@@ -52,10 +52,12 @@ const features = [
     method: "GET",
     description: "Search using Luminai AI",
     category: "AI Tools",
-    endpoint: "../api/lumin.js",
+    endpoint: "../api/lumin",
     query: "text=Hai%20kamu"
   }
 ];
+
+const luminai = "../api/lumin.js"
 
 const featureContainer = document.getElementById("features");
 
