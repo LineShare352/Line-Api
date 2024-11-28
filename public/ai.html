@@ -5,299 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat UI Modernized</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="biji.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <style>
-    /* General Styles */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      animation: backgroundMove 15s ease-in-out infinite;
-    }
-
-    @keyframes backgroundMove {
-      0% { background: linear-gradient(135deg, #FF8C00, #FF6F61); }
-      50% { background: linear-gradient(135deg, #FF6F61, #FF8C00); }
-      100% { background: linear-gradient(135deg, #FF8C00, #FF6F61); }
-    }
-
-    .chatbox {
-      width: 100%;
-      max-width: 480px;
-      height: 95vh;
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .chatbox:hover {
-      transform: scale(1.03);
-    }
-
-    /* Header Section */
-    .chat-header {
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      background: #4CAF50;
-      color: white;
-      border-bottom: 2px solid #e1e1e1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .chat-header img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 20px;
-      border: 2px solid white;
-    }
-
-    .chat-header .profile-info {
-      flex: 1;
-    }
-
-    .chat-header h1 {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .chat-header p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: #eaeaea;
-    }
-
-    .chat-header .menu-button {
-      font-size: 1.6rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .chat-header .menu-button:hover {
-      transform: scale(1.2);
-    }
-
-    /* Chat Messages */
-    .chat-messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      background: #fafafa;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .message {
-      max-width: 75%;
-      padding: 14px 22px;
-      border-radius: 15px;
-      font-size: 1rem;
-      word-wrap: break-word;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .user-message {
-      background: #DCF8C6;
-      align-self: flex-end;
-      border-radius: 18px 18px 0 18px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .ai-message {
-      background: #ffffff;
-      align-self: flex-start;
-      border-radius: 18px 18px 18px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .message-time {
-      font-size: 0.75rem;
-      color: #b0b0b0;
-      align-self: flex-end;
-      margin-top: 5px;
-    }
-
-    /* Chat Input */
-    .chat-input {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 18px;
-      background: #fff;
-      border-top: 2px solid #ddd;
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    .chat-input input {
-      flex: 1;
-      padding: 14px 20px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 25px;
-      outline: none;
-      background-color: #e0e0e0;
-      transition: background-color 0.3s ease, box-shadow 0.2s ease;
-    }
-
-    .chat-input input:focus {
-      background-color: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .chat-input button {
-      background: #4CAF50;
-      border: none;
-      color: #fff;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 1.5rem;
-    }
-
-    .chat-input button:hover {
-      background-color: #45a049;
-    }
-
-    .chat-input button:active {
-      transform: scale(0.9);
-    }
-
-    /* Typing Indicator */
-    .typing-indicator {
-      font-size: 0.9rem;
-      color: #9b9b9b;
-      display: flex;
-      gap: 6px;
-    }
-
-    .typing-indicator .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #4CAF50;
-      animation: typing 1.2s infinite ease;
-    }
-
-    .typing-indicator .dot:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .typing-indicator .dot:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .typing-indicator .dot:nth-child(3) {
-      animation-delay: 0.8s;
-    }
-
-    @keyframes typing {
-      0% { opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-  </style>
 </head>
 <body>
   <div class="chatbox">
+    <!-- Chat Header -->
     <div class="chat-header">
-      <i class="fas fa-arrow-left" onclick="goToHome()"></i>
       <img src="https://pomf2.lain.la/f/ttokvts.jpg" alt="Profile">
       <div class="profile-info">
         <h1>Line AI</h1>
-        <p>Online</p>
+        <p id="onlineStatus">Online</p>
       </div>
-      <i class="fas fa-ellipsis-v menu-button"></i>
+      <i class="fas fa-moon mode-toggle" onclick="toggleTheme()"></i>
     </div>
 
+    <!-- Chat Messages -->
     <div id="chatboxMessages" class="chat-messages"></div>
 
+    <!-- Chat Input -->
     <div class="chat-input">
+      <button class="emoji-button" onclick="toggleEmojiPicker()">
+        <i class="fas fa-smile"></i>
+      </button>
+      <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="sendImage(event)">
+      <button class="file-button" onclick="document.getElementById('fileInput').click()">
+        <i class="fas fa-paperclip"></i>
+      </button>
       <input type="text" id="userInput" placeholder="Ketik pesan Anda..." oninput="checkInput()">
       <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
+
+    <!-- Emoji Picker -->
+    <div id="emojiPicker" class="emoji-picker" style="display: none;">
+      <span onclick="addEmoji('😀')">😀</span>
+      <span onclick="addEmoji('😁')">😁</span>
+      <span onclick="addEmoji('😂')">😂</span>
+      <span onclick="addEmoji('😍')">😍</span>
+      <span onclick="addEmoji('😎')">😎</span>
+      <span onclick="addEmoji('😢')">😢</span>
+      <span onclick="addEmoji('❤️')">❤️</span>
+      <!-- Add more emojis as desired -->
+    </div>
   </div>
 
-  <script>
-    function goToHome() {
-      window.location.href = 'index.html';
-    }
-
-    function checkInput() {
-      const input = document.getElementById('userInput').value;
-      const button = document.querySelector('.chat-input button');
-      button.disabled = input.trim() === '';
-    }
-
-    async function sendMessage() {
-      const input = document.getElementById('userInput').value;
-      if (input.trim() === '') return;
-
-      const messagesContainer = document.getElementById('chatboxMessages');
-      const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-      // Add user's message
-      const userMessage = document.createElement('div');
-      userMessage.classList.add('message', 'user-message');
-      userMessage.innerHTML = `${input}<div class="message-time">${currentTime}</div>`;
-      messagesContainer.appendChild(userMessage);
-
-      document.getElementById('userInput').value = '';
-
-      // Display typing indicator
-      const typingIndicator = document.createElement('div');
-      typingIndicator.classList.add('typing-indicator');
-      typingIndicator.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-      messagesContainer.appendChild(typingIndicator);
-
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-      try {
-        const baseURL = 'https://aemt.uk.to/prompt/gpt';
-        const prompt = encodeURIComponent('Saya adalah Line, sebuah asisten virtual yang diciptakan oleh Wira. Saya di sini untuk membantu menjawab pertanyaan dan memberikan informasi yang Anda butuhkan. Ada yang bisa saya bantu hari ini?');
-        const text = encodeURIComponent(input);
-        const response = await axios.get(`${baseURL}?prompt=${prompt}&text=${text}`);
-
-        typingIndicator.remove();
-
-        if (response.data && response.data.result) {
-          const aiMessage = document.createElement('div');
-          aiMessage.classList.add('message', 'ai-message');
-          aiMessage.innerHTML = `${response.data.result}<div class="message-time">${currentTime}</div>`;
-          messagesContainer.appendChild(aiMessage);
-        } else {
-          throw new Error('Respons tidak valid dari server.');
-        }
-      } catch (error) {
-        typingIndicator.remove();
-        const errorMessage = document.createElement('div');
-        errorMessage.classList.add('message', 'ai-message');
-        errorMessage.innerHTML = `Error. Silakan coba lagi.<div class="message-time">${currentTime}</div>`;
-        messagesContainer.appendChild(errorMessage);
-      }
-
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-  </script>
+  <script src="surya.js"></script>
 </body>
 </html>
