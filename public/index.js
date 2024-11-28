@@ -45,9 +45,7 @@ const features = [
     description: "Maker/yt-comment",
     category: "Maker",
     endpoint: "../api/ytcomment.js",
-    query: "text=Hello%20Wak", 
-    avatar: "https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg",
-    username: "Line"
+    query: "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
   }
 ];
 
