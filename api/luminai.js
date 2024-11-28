@@ -19,7 +19,7 @@ app.get('/api/luminai', async (req, res) => {
         });
     }
 
-    const url = `https://api.siputzx.my.id/api/ai/luminai?content=${encodeURIComponent(content)}`;
+    const url = `https://api.siputzx.my.id/api/ai/luminai?content=${encodeURIComponent(text)}`;
     try {
         const response = await axios.get(url);
         const data = response.data;
