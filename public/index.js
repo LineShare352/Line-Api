@@ -1,35 +1,35 @@
 const features = [
   {
-    name: "Google-Search",
-    method: "GET",
-    description: "Search/google",
-    category: "Search",
-    endpoint: "../api/google.js",
-    query: "text=Oline%20Jkt48"
+    "name": "Google-Search",
+    "method": "GET",
+    "description": "Search/google",
+    "category": "Search",
+    "endpoint": "/api/google",
+    "query": "text=Oline%20Jkt48"
   },
   {
-    name: "NPM Search",
-    method: "GET",
-    description: "Search/npm",
-    category: "Search",
-    endpoint: "../api/npm.js",
-    query: "text=axios"
+    "name": "NPM Search",
+    "method": "GET",
+    "description": "Search/npm",
+    "category": "Search",
+    "endpoint": "/api/npm",
+    "query": "text=axios"
   },
   {
-    name: "Wikimedia",
-    method: "GET",
-    description: "Search/wikimedia",
-    category: "Search",
-    endpoint: "../api/wikimedia.js",
-    query: "text=Harimau"
+    "name": "Wikimedia",
+    "method": "GET",
+    "description": "Search/wikimedia",
+    "category": "Search",
+    "endpoint": "/api/wikimedia",
+    "query": "text=Harimau"
   }, 
   {
-    name: "Pinterest",
-    method: "GET",
-    description: "Search/pinterest",
-    category: "Search",
-    endpoint: "../api/pinterest.js",
-    query: "text=Oline%20Jkt48"
+    "name": "Pinterest",
+    "method": "GET",
+    "description": "Search/pinterest",
+    "category": "Search",
+    "endpoint": "/api/pinterest",
+    "query": "text=Oline%20Jkt48"
   },
   {
   "name": "Brat-Sticker",
@@ -40,28 +40,28 @@ const features = [
   "query": "text=Hello%20Wak"
   },
   {
-    name: "Yt-Comment",
-    method: "GET",
-    description: "Maker/yt-comment",
-    category: "Maker",
-    endpoint: "../api/ytcomment.js",
-    query: "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
+    "name": "Yt-Comment",
+    "method": "GET",
+    "description": "Maker/yt-comment",
+    "category": "Maker",
+    "endpoint": "/api/ytcomment",
+    "query": "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
   }, 
   {
-    name: "Luminai",
-    method: "GET",
-    description: "AI/Lumin",
-    category: "AI Tools",
-    endpoint: "../api/luminai.js",
-    query: "text=Hai%20kamu"
+    "name": "Luminai",
+    "method": "GET",
+    "description": "AI/Lumin",
+    "category": "AI Tools",
+    "endpoint": "/api/luminai",
+    "query": "text=Hai%20kamu"
   }, 
   {
-    name: "Blackbox",
-    method: "GET",
-    description: "AI/Blackbox",
-    category: "AI Tools",
-    endpoint: "../api/blackbox.js",
-    query: "text=Hai%20kamu"
+    "name": "Blackbox",
+    "method": "GET",
+    "description": "AI/Blackbox",
+    "category": "AI Tools",
+    "endpoint": "/api/blackbox",
+    "query": "text=Hai%20kamu"
   }
 ];
 
