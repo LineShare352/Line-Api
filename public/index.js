@@ -32,6 +32,14 @@ const features = [
     "query": "text=Oline%20Jkt48"
   },
   {
+    "name": "Chord",
+    "method": "GET",
+    "description": "Search/Chord",
+    "category": "Search",
+    "endpoint": "/api/chord",
+    "query": "text=Diary%20depresiku"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
