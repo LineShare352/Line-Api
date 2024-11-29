@@ -8,7 +8,7 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-app.get("/api/blackbox.js", async (req, res) => {
+app.get('/api/blackbox', async (req, res) => {
   const { text } = req.query;
 
   if (!text) {

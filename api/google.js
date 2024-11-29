@@ -11,14 +11,14 @@ app.use(cors());
 const apiKey = 'AIzaSyAajE2Y-Kgl8bjPyFvHQ-PgRUSMWgBEsSk';
 const cx = 'e5c2be9c3f94c4bbb';
 
-app.get('/api/google.js', async (req, res) => {
+app.get('/api/google', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Query Params:", req.query);
     const { text } = req.query;
     if (!text) {
         return res.json({
             status: false,
-            data: 'Contoh penggunaan: ?text=Oline Jkt48',
+            data: 'Contoh penggunaan: ?text=halo',
         });
     }
     const query = encodeURIComponent(text);
