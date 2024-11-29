@@ -32,14 +32,6 @@ const features = [
     "query": "text=Oline%20Jkt48"
   },
   {
-    "name": "Chord",
-    "method": "GET",
-    "description": "Search/Chord",
-    "category": "Search",
-    "endpoint": "/api/chord",
-    "query": "text=Diary%20depresiku"
-  },
-  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
@@ -76,7 +68,7 @@ const features = [
     "method": "GET",
     "description": "AI/Simi",
     "category": "AI Tools",
-    "endpoint": "/api/simi",
+    "endpoint": "/api/ai/simi",
     "query": "text=Hai%20kamu"
   }
 ];
