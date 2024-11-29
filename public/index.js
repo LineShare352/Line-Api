@@ -64,12 +64,20 @@ const features = [
     "query": "text=Hai%20kamu"
   },
   {
-    "name": "Simiai",
+    "name": "Simi",
     "method": "GET",
     "description": "AI/Simi",
     "category": "AI Tools",
     "endpoint": "/api/ai/simi",
     "query": "text=Hai%20kamu"
+  }, 
+  {
+    "name": "Animebatch-Search",
+    "method": "GET",
+    "description": "Anime/AnimeBatch",
+    "category": "Anime",
+    "endpoint": "/api/anime/batch",
+    "query": "text=Maou"
   }
 ];
 
