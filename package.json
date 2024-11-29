@@ -6,7 +6,7 @@
     "axios": "1.7.7",
     "cors": "2.8.5",
     "express": "4.19.2", 
-    "node-fetch": "^2.6.1"
+    "node-fetch": "2.6.1"
   },
   "scripts": {
     "start": "vercel dev"
