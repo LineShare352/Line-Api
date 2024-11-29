@@ -1,6 +1,6 @@
 {
-  "name": "projekv2",
-  "version": "1.0.0",
+  "name": "Hello Line",
+  "version": "3.0.0",
   "main": "index.js",
   "dependencies": {
     "axios": "1.7.7",
