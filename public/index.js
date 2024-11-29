@@ -70,7 +70,7 @@ const features = [
     "category": "AI Tools",
     "endpoint": "/api/simi",
     "query": "text=Hai%20kamu"
-  },
+  }
 ];
 
 const featureContainer = document.getElementById("features");
