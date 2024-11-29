@@ -4,35 +4,34 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-// API Endpoint: /api/brat
-app.get('/api/maker/brat', async (req, res) => {
+app.get('/api/maker/ytcomment', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Query Params:", req.query);
 
-    const { text } = req.query;
+    const { text, avatar, username } = req.query;
 
-    if (!text) {
+    if (!text || !avatar || !username) {
         return res.json({
             status: false,
-            creator: "Hello Line",
-            result: 'Contoh penggunaan: ?text=Hello%20World'
+            creator: "Hello Line", // Tambahkan creator
+            result: 'Contoh penggunaan: ?text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line'
         });
     }
 
     try {
         const response = await axios.get(
-            `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}`,
-            { responseType: 'arraybuffer' }
+            `https://some-random-api.com/canvas/misc/youtube-comment?comment=${encodeURIComponent(text)}&avatar=${encodeURIComponent(avatar)}&username=${encodeURIComponent(username)}`,
+            { responseType: 'arraybuffer' } // Menerima gambar sebagai buffer
         );
         console.log("Response from External API:", response.data);
 
+        // Kirimkan respon berupa gambar
         res.set('Content-Type', 'image/png');
-        res.set('Creator', 'Hello Line');
+        res.set('Creator', 'Hello Line'); // Tambahkan header creator
         res.send(response.data);
 
     } catch (err) {
@@ -41,7 +40,7 @@ app.get('/api/maker/brat', async (req, res) => {
 
         const errorResponse = {
             status: false,
-            creator: "Hello Line",
+            creator: "Hello Line", // Tambahkan creator
             result: {
                 error: err.message,
                 ...(err.response && {
@@ -51,20 +50,11 @@ app.get('/api/maker/brat', async (req, res) => {
                 })
             }
         };
-        return res.json(errorResponse);
+
+        return res.status(500).json(errorResponse);
     }
 });
 
-// Default route for 404 errors
-app.use((req, res) => {
-    res.status(404).json({
-        status: false,
-        creator: "Hello Line",
-        result: "Endpoint tidak ditemukan. Contoh penggunaan: /api/brat?text=Hello%20World"
-    });
-});
-
-// Start server
 app.listen(PORT, () => {
     console.log(`Server started on http://localhost:${PORT}`);
 });
