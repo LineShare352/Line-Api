@@ -1,0 +1,14 @@
+{
+  "biasa123": {
+    "type": "biasa",
+    "limit": 10
+  },
+  "standar456": {
+    "type": "standar",
+    "limit": 50
+  },
+  "premium789": {
+    "type": "premium",
+    "limit": "unlimited"
+  }
+}
