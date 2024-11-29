@@ -94,6 +94,30 @@ const features = [
   "category": "Games",
   "endpoint": "/api/games/tebakhewan",
   "query": null
+  },
+  {
+  "name": "Tebak Bendera",
+  "method": "GET",
+  "description": "Games/Tebak Bendera",
+  "category": "Games",
+  "endpoint": "/api/games/tebakbendera",
+  "query": null
+  }, 
+  {
+  "name": "Tebak Gambar",
+  "method": "GET",
+  "description": "Games/Tebak Gambar",
+  "category": "Games",
+  "endpoint": "/api/games/tebakgambar",
+  "query": null
+  }, 
+  {
+  "name": "Tebak ML",
+  "method": "GET",
+  "description": "Games/Tebak ML",
+  "category": "Games",
+  "endpoint": "/api/games/tebakml",
+  "query": null
   }
 ];
 
