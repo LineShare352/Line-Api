@@ -10,7 +10,7 @@ app.use(cors());
 
 app.get('/api/games/tebakjkt', async (req, res) => {
   try {
-    const response = await axios.get('https://api.siputzx.my.id/api/games/tebakjkt');
+    const response = await axios.get('https://api.siputzx.my.id/api/games/tebakjkt?-');
 
     return res.status(200).json({
       status: true,
