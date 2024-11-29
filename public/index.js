@@ -62,7 +62,7 @@ const features = [
     "category": "AI Tools",
     "endpoint": "/api/ai/blackbox",
     "query": "text=Hai%20kamu"
-  }
+  },
   {
     "name": "Simiai",
     "method": "GET",
