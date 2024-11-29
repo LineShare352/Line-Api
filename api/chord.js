@@ -1,6 +1,6 @@
 const cors = require('cors');
 const express = require('express');
-const axios = require('axios');
+const fetch = require('node-fetch'); // Menggunakan node-fetch sebagai pengganti axios
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -20,16 +20,24 @@ app.get('/api/chord', async (req, res) => {
   }
 
   try {
-    const response = await axios.get(`https://btch.us.kg/chord`, {
-      params: { query: text } // Menggunakan text sebagai query
-    });
+    const apiUrl = `https://btch.us.kg/chord?query=${encodeURIComponent(text)}`; // URL API
+    const response = await fetch(apiUrl); // Mengganti axios dengan fetch
+    const data = await response.json(); // Parsing response ke JSON
 
-    return res.status(200).json({
-      status: true,
+    if (response.ok && data && data.chord) {
+      return res.status(200).json({
+        status: true,
+        creator: "Hello Line", 
+        result: {
+          chord: data.chord // Menyimpan data chord di result
+        }
+      });
+    }
+
+    return res.status(404).json({
+      status: false,
       creator: "Hello Line", 
-      result: {
-        chord: response.data.chord || "Chord tidak ditemukan." // Chord diletakkan di dalam objek result
-      }
+      error: "Chord tidak ditemukan."
     });
   } catch (e) {
     console.error("Error:", e.message);
