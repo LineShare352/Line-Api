@@ -9,7 +9,7 @@ app.set("json spaces", 2);
 app.use(cors());
 
 app.get('/api/chord', async (req, res) => {
-  const { text } = req.query;
+  const { text } = req.query; // Mengambil parameter query "text"
 
   if (!text) {
     return res.status(400).json({
@@ -21,13 +21,15 @@ app.get('/api/chord', async (req, res) => {
 
   try {
     const response = await axios.get(`https://btch.us.kg/chord`, {
-      params: { query: text } 
+      params: { query: text } // Menggunakan text sebagai query
     });
 
     return res.status(200).json({
       status: true,
       creator: "Hello Line", 
-      chord: response.data.chord || "Chord tidak ditemukan.",
+      result: {
+        chord: response.data.chord || "Chord tidak ditemukan." // Chord diletakkan di dalam objek result
+      }
     });
   } catch (e) {
     console.error("Error:", e.message);
