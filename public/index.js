@@ -4,7 +4,7 @@ const features = [
     "method": "GET",
     "description": "Search/google",
     "category": "Search",
-    "endpoint": "/api/google",
+    "endpoint": "/api/search/google",
     "query": "text=Oline%20Jkt48"
   },
   {
@@ -12,7 +12,7 @@ const features = [
     "method": "GET",
     "description": "Search/npm",
     "category": "Search",
-    "endpoint": "/api/npm",
+    "endpoint": "/api/search/npm",
     "query": "text=axios"
   },
   {
@@ -20,7 +20,7 @@ const features = [
     "method": "GET",
     "description": "Search/wikimedia",
     "category": "Search",
-    "endpoint": "/api/wikimedia",
+    "endpoint": "/api/search/wikimedia",
     "query": "text=Harimau"
   }, 
   {
@@ -28,7 +28,7 @@ const features = [
     "method": "GET",
     "description": "Search/pinterest",
     "category": "Search",
-    "endpoint": "/api/pinterest",
+    "endpoint": "/api/search/pinterest",
     "query": "text=Oline%20Jkt48"
   },
   {
@@ -36,7 +36,7 @@ const features = [
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
   "category": "Maker",
-  "endpoint": "/api/brat",
+  "endpoint": "/api/maker/brat",
   "query": "text=Hello%20Wak"
   },
   {
@@ -44,7 +44,7 @@ const features = [
     "method": "GET",
     "description": "Maker/yt-comment",
     "category": "Maker",
-    "endpoint": "/api/ytcomment",
+    "endpoint": "/api/maker/ytcomment",
     "query": "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
   }, 
   {
@@ -52,7 +52,7 @@ const features = [
     "method": "GET",
     "description": "AI/Lumin",
     "category": "AI Tools",
-    "endpoint": "/api/luminai",
+    "endpoint": "/api/ai/luminai",
     "query": "text=Hai%20kamu"
   }, 
   {
@@ -60,9 +60,17 @@ const features = [
     "method": "GET",
     "description": "AI/Blackbox",
     "category": "AI Tools",
-    "endpoint": "/api/blackbox",
+    "endpoint": "/api/ai/blackbox",
     "query": "text=Hai%20kamu"
   }
+  {
+    "name": "Simiai",
+    "method": "GET",
+    "description": "AI/Simi",
+    "category": "AI Tools",
+    "endpoint": "/api/simi",
+    "query": "text=Hai%20kamu"
+  },
 ];
 
 const featureContainer = document.getElementById("features");
