@@ -80,11 +80,19 @@ const features = [
     "query": "text=Maou"
   }, 
   {
-  "name": "Tebak Jkt",
+  "name": "Tebak JKT",
   "method": "GET",
   "description": "Games/Tebak JKT48",
   "category": "Games",
   "endpoint": "/api/games/tebakjkt",
+  "query": null
+  }, 
+  {
+  "name": "Tebak Hewan",
+  "method": "GET",
+  "description": "Games/Tebak Hewan",
+  "category": "Games",
+  "endpoint": "/api/games/tebakhewan",
   "query": null
   }
 ];
