@@ -8,12 +8,14 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-app.get('/api/brat.js', async (req, res) => {
+// Menghilangkan `/brat.js`, cukup gunakan `/api`
+app.get('/api', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Query Params:", req.query);
 
     const { text } = req.query;
 
+    // Jika tidak ada query `text`
     if (!text) {
         return res.json({
             status: false,
@@ -23,13 +25,14 @@ app.get('/api/brat.js', async (req, res) => {
     }
 
     try {
+        // Panggil API eksternal
         const response = await axios.get(
             `https://api.siputzx.my.id/api/m/brat?text=${encodeURIComponent(text)}`,
             { responseType: 'arraybuffer' }
         );
         console.log("Response from External API:", response.data);
 
-        // Mengirimkan respon berupa gambar
+        // Respon berupa gambar
         res.set('Content-Type', 'image/png');
         res.set('Creator', 'Hello Line'); 
         res.send(response.data);
@@ -38,6 +41,7 @@ app.get('/api/brat.js', async (req, res) => {
         console.error("External API Error:", err.message);
         console.error("Full Error Details:", err.response ? err.response.data : err);
 
+        // Kirimkan error jika API eksternal gagal
         const errorResponse = {
             status: false,
             creator: "Hello Line", 
