@@ -85,7 +85,7 @@ const features = [
   "description": "Games/Tebak JKT48",
   "category": "Games",
   "endpoint": "/api/game/tebakjkt",
-  "query": null
+  "query": "-"
   }
 ];
 
