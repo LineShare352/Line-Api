@@ -72,14 +72,6 @@ const features = [
     "query": "text=Hai%20kamu"
   }, 
   {
-    "name": "Animebatch-Search",
-    "method": "GET",
-    "description": "Anime/AnimeBatch",
-    "category": "Anime",
-    "endpoint": "/api/anime/batch",
-    "query": "text=Maou"
-  }, 
-  {
   "name": "Tebak JKT",
   "method": "GET",
   "description": "Games/Tebak JKT48",
@@ -94,7 +86,7 @@ const features = [
   "category": "Games",
   "endpoint": "/api/games/tebakhewan",
   "query": null
-  },
+  }, 
   {
   "name": "Tebak Bendera",
   "method": "GET",
