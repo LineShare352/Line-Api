@@ -32,12 +32,12 @@ const features = [
     query: "text=Oline%20Jkt48"
   },
   {
-    name: "Brat",
-    method: "GET",
-    description: "Maker/brat",
-    category: "Maker",
-    endpoint: "../api/brat.js",
-    query: "text=Hello%20Wak"
+  "name": "Brat-Sticker",
+  "method": "GET",
+  "description": "Maker/Brat-Sticker.",
+  "category": "Maker",
+  "endpoint": "/api/brat",
+  "query": "text=Hello%20Wak"
   },
   {
     name: "Yt-Comment",
