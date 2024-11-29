@@ -9,7 +9,7 @@ app.set("json spaces", 2);
 app.use(cors());
 
 // Menghilangkan `/brat.js`, cukup gunakan `/api`
-app.get('/api/brat', async (req, res) => {
+app.get('/api/brat.js', async (req, res) => {
     console.log("HTTP Method:", req.method);
     console.log("Query Params:", req.query);
 
