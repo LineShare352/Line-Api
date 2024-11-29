@@ -78,6 +78,14 @@ const features = [
     "category": "Anime",
     "endpoint": "/api/anime/batch",
     "query": "text=Maou"
+  }, 
+  {
+  "name": "Tebak Jkt",
+  "method": "GET",
+  "description": "Games/Tebak JKT48",
+  "category": "Games",
+  "endpoint": "/api/game/tebakjkt",
+  "query": null
   }
 ];
 
