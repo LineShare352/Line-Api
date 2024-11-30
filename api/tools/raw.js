@@ -14,19 +14,23 @@ app.get('/api/tools/raw', async (req, res) => {
     return res.status(400).json({
       status: false,
       creator: 'Hello Line', 
-      message: 'Invalid or missing GitHub URL.',
+      result: 'Invalid or missing GitHub URL.',
     });
   }
 
   try {
     const rawUrl = url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
-    res.redirect(rawUrl);
+    return res.json({
+      status: true,
+      creator: 'Hello Line',
+      result: `${rawUrl}`,
+    }); 
   } catch (error) {
     console.error("Error:", error.message);
     res.status(500).json({
       status: false,
       creator: 'Hello Line', 
-      message: 'Failed to convert GitHub URL to raw.',      
+      result: 'Failed to convert GitHub URL to raw.',
     });
   }
 });
