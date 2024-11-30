@@ -203,7 +203,7 @@ const features = [
   "name": "Facebook",
   "method": "GET",
   "description": "Download/Facebook",
-  "category": " Download",
+  "category": "Download",
   "endpoint": "/api/download/facebook",
   "query": "url=https://www.facebook.com/share/r/12BFZAtjpS8/?mibextid=qDwCgo"
   },
