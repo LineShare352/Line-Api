@@ -1,6 +1,6 @@
 {
-  "name": "Hi Line",
-  "version": "3.0.0",
+  "name": "HiLine",
+  "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
     "axios": "1.7.7",
