@@ -270,6 +270,30 @@ const features = [
   "category": "Random",
   "endpoint": "/api/random/vietnam",
   "query": null
+  }, 
+  {
+  "name": "To Raw",
+  "method": "GET",
+  "description": "Tools/To Raw",
+  "category": "Tools",
+  "endpoint": "/api/tools/raw",
+  "query": "url="
+  }, 
+  {
+  "name": "To Base64",
+  "method": "GET",
+  "description": "Tools/To Base64",
+  "category": "Tools",
+  "endpoint": "/api/tools/base64",
+  "query": "text=Line%20Sanjaya"
+  }, 
+  {
+  "name": "To Utf8",
+  "method": "GET",
+  "description": "Tools/To Utf8",
+  "category": "Tools",
+  "endpoint": "/api/tools/utf8",
+  "query": "text=hai"
   }
 ];
 
