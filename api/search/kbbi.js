@@ -12,7 +12,7 @@ app.get('/api/search/kbbi', async (req, res) => {
   try {
     const { text } = req.query; 
 
-    if (!q) {
+    if (!text) {
       return res.status(400).json({
         status: false,
         creator: "Hello Line",
