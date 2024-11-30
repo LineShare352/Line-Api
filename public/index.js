@@ -158,7 +158,7 @@ const features = [
   "category": "Games",
   "endpoint": "/api/games/tebakkabupaten",
   "query": null
-  }
+  }, 
   {
   "name": "Tebak Lagu",
   "method": "GET",
