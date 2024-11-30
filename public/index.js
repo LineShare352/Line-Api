@@ -269,7 +269,7 @@ const features = [
   "description": "Download/Capcut",
   "category": "Download",
   "endpoint": "/api/download/capcut",
-  "query": "url="
+  "query": "url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic"
   },
   {
   "name": "Indonesia",
