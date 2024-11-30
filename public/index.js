@@ -253,7 +253,7 @@ const features = [
   "description": "Download/Soundcloud",
   "category": "Download",
   "endpoint": "/api/download/soundcloud",
-  "query": "url=https://soundcloud.com/user593948131/last-child-diary-depresiku"
+  "query": "url=https://m.soundcloud.com/teguh-hariyadi-652597010/anji-dia"
   },
   {
   "name": "Google Drive",
