@@ -56,6 +56,22 @@ const features = [
     "query": "text=diary%20depresiku"
   },
   {
+  "name": "Otakudesu-Search",
+  "method": "GET",
+  "description": "Anime/Otakudesu",
+  "category": "Anime",
+  "endpoint": "/api/anime/otakudesu",
+  "query": "s=sao-alternative-online-s2-sub-indo"
+  },
+  {
+  "name": "Animebatch-Search",
+  "method": "GET",
+  "description": "Anime/Animebatch",
+  "category": "Anime",
+  "endpoint": "/api/anime/batch",
+  "query": "text=naruto"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
@@ -189,8 +205,8 @@ const features = [
   "description": "Stalk/Tiktok",
   "category": "Stalk",
   "endpoint": "/api/stalk/tiktok",
-  "query": "text=mrbeast"
-  },
+  "query": "username=mrbeast"
+  },  
   {
   "name": "Jagokata",
   "method": "GET",
@@ -302,7 +318,7 @@ const features = [
   "category": "Tools",
   "endpoint": "/api/tools/utf8",
   "query": "text=hai"
-  },
+  }, 
   {
   "name": "To Ori",
   "method": "GET",
