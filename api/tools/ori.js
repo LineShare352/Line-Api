@@ -10,7 +10,7 @@ app.use(cors());
 app.get('/api/tools/ori', async (req, res) => {
   const { url } = req.query;
 
-  if (!url || !url.includes('github.com')) {
+  if (!url || !url.includes('raw.githubusercontent.com')) {
     return res.status(400).json({
       status: false,
       creator: 'Hello Line', 
@@ -19,7 +19,7 @@ app.get('/api/tools/ori', async (req, res) => {
   }
 
   try {
-    const oriUrl = url.replace('raw.githubusercontent.com', 'github.com').replace('/blob/', '/');
+    const oriUrl = url.replace('github.com').replace('/blob/', '/');
     return res.json({
       status: true,
       creator: 'Hello Line',
