@@ -19,7 +19,7 @@ app.get('/api/tools/ori', async (req, res) => {
   }
 
   try {
-    const oriUrl = url.replace('github.com').replace('/blob/', '/');
+    const oriUrl = url.replace('raw.githubusercontent.com', 'github.com').replace('/blob/', '/');
     return res.json({
       status: true,
       creator: 'Hello Line',
