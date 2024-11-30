@@ -32,6 +32,22 @@ const features = [
     "query": "text=Oline%20Jkt48"
   },
   {
+    "name": "Kbbi",
+    "method": "GET",
+    "description": "Search/Kbbi",
+    "category": "Search",
+    "endpoint": "/api/search/kbbi",
+    "query": "text=asu"
+  },
+  {
+    "name": "Playstore",
+    "method": "GET",
+    "description": "Search/Playstore",
+    "category": "Search",
+    "endpoint": "/api/search/playstore",
+    "query": "text=free%20fire"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
@@ -72,6 +88,30 @@ const features = [
     "query": "text=Hai%20kamu"
   }, 
   {
+    "name": "Gemini",
+    "method": "GET",
+    "description": "AI/Gemini",
+    "category": "AI Tools",
+    "endpoint": "/api/ai/gemini",
+    "query": "text=Hai%20kamu"
+  }, 
+  {
+    "name": "Moshi Ai",
+    "method": "GET",
+    "description": "AI/Moshi Ai",
+    "category": "AI Tools",
+    "endpoint": "/api/ai/moshiai",
+    "query": "text=Hai%20kamu"
+  }, 
+  {
+    "name": "Muslim Ai",
+    "method": "GET",
+    "description": "AI/Muslim Ai",
+    "category": "AI Tools",
+    "endpoint": "/api/ai/muslimai",
+    "query": "text=Hai"
+  }, 
+  {
   "name": "Tebak JKT",
   "method": "GET",
   "description": "Games/Tebak JKT48",
@@ -110,6 +150,78 @@ const features = [
   "category": "Games",
   "endpoint": "/api/games/tebakml",
   "query": null
+  },
+  {
+  "name": "Tebak Kabupaten",
+  "method": "GET",
+  "description": "Games/Kabupaten",
+  "category": "Games",
+  "endpoint": "/api/games/tebakkabupaten",
+  "query": null
+  }
+  {
+  "name": "Tebak Lagu",
+  "method": "GET",
+  "description": "Games/Tebak Lagu",
+  "category": "Games",
+  "endpoint": "/api/games/tebaklagu",
+  "query": null
+  },
+  {
+  "name": "Tebak Kalimat",
+  "method": "GET",
+  "description": "Games/Tebak Kalimat",
+  "category": "Games",
+  "endpoint": "/api/games/tebakkalimat",
+  "query": null
+  }, 
+  {
+  "name": "Tiktok",
+  "method": "GET",
+  "description": "Stalk/Tiktok",
+  "category": "Stalk",
+  "endpoint": "/api/stalk/tiktok",
+  "query": "text=mrbeast"
+  },
+  {
+  "name": "Jagokata",
+  "method": "GET",
+  "description": "Fun/Jagokata",
+  "category": "Fun",
+  "endpoint": "/api/fun/jagokata",
+  "query": "text=kesuksesan"
+  },
+  {
+  "name": "Instagram",
+  "method": "GET",
+  "description": "Download/Instagram",
+  "category": "Download",
+  "endpoint": "/api/download/instagram",
+  "query": "url=https://www.instagram.com/p/DCQhOuXTRvE/?img_index=1."
+  },
+  {
+  "name": "Facebook",
+  "method": "GET",
+  "description": "Download/Facebook",
+  "category": " Download",
+  "endpoint": "/api/download/facebook",
+  "query": "url=https://www.facebook.com/share/r/12BFZAtjpS8/?mibextid=qDwCgo"
+  },
+  {
+  "name": "Tiktok",
+  "method": "GET",
+  "description": "Download/Tiktok",
+  "category": "Download",
+  "endpoint": "/api/download/tiktok",
+  "query": "url=https://vt.tiktok.com/ZSjbVKJpe/"
+  }, 
+  {
+  "name": "Spotify",
+  "method": "GET",
+  "description": "Download/Spotify",
+  "category": "Download",
+  "endpoint": "/api/download/spotify",
+  "query": "url=https://open.spotify.com/album/3gUZpvR4h9ErseH3AzaHJL?si=Xno8zRVbQ56PvjdHebCOQA"
   }
 ];
 
