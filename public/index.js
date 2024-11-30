@@ -222,6 +222,14 @@ const features = [
   "category": "Download",
   "endpoint": "/api/download/spotify",
   "query": "url=https://open.spotify.com/album/3gUZpvR4h9ErseH3AzaHJL?si=Xno8zRVbQ56PvjdHebCOQA"
+  }, 
+  {
+  "name": "China",
+  "method": "GET",
+  "description": "Random/China",
+  "category": "Random",
+  "endpoint": "/api/random/china",
+  "query": null
   }
 ];
 
