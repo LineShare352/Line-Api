@@ -294,6 +294,14 @@ const features = [
   "category": "Tools",
   "endpoint": "/api/tools/utf8",
   "query": "text=hai"
+  },
+  {
+  "name": "To Ori",
+  "method": "GET",
+  "description": "Tools/To Ori",
+  "category": "Tools",
+  "endpoint": "/api/tools/ori",
+  "query": "url=https://raw.githubusercontent.com/LineShare352/Line-Api/main/public/index.html"
   }
 ];
 
