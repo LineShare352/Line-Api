@@ -9,7 +9,7 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-app.get('/api/anime/otakudesu/search', async (req, res) => {
+app.get('/api/anime/otakudesu', async (req, res) => {
   const { s } = req.query;  
 
   if (!s) {
