@@ -248,6 +248,30 @@ const features = [
   "query": "url=https://open.spotify.com/album/3gUZpvR4h9ErseH3AzaHJL?si=Xno8zRVbQ56PvjdHebCOQA"
   },
   {
+  "name": "Soundcloud",
+  "method": "GET",
+  "description": "Download/Soundcloud",
+  "category": "Download",
+  "endpoint": "/api/download/soundcloud",
+  "query": "url=https://soundcloud.com/user593948131/last-child-diary-depresiku"
+  },
+  {
+  "name": "Google Drive",
+  "method": "GET",
+  "description": "Download/Google Drive",
+  "category": "Download",
+  "endpoint": "/api/download/gdrive",
+  "query": "url="
+  },
+  {
+  "name": "Capcut",
+  "method": "GET",
+  "description": "Download/Capcut",
+  "category": "Download",
+  "endpoint": "/api/download/capcut",
+  "query": "url="
+  },
+  {
   "name": "Indonesia",
   "method": "GET",
   "description": "Random/Indonesia",
