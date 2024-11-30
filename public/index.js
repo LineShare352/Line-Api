@@ -158,7 +158,7 @@ const features = [
   "category": "Games",
   "endpoint": "/api/games/tebakkabupaten",
   "query": null
-  }, 
+  },
   {
   "name": "Tebak Lagu",
   "method": "GET",
@@ -222,13 +222,53 @@ const features = [
   "category": "Download",
   "endpoint": "/api/download/spotify",
   "query": "url=https://open.spotify.com/album/3gUZpvR4h9ErseH3AzaHJL?si=Xno8zRVbQ56PvjdHebCOQA"
-  }, 
+  },
+  {
+  "name": "Indonesia",
+  "method": "GET",
+  "description": "Random/Indonesia",
+  "category": "Random",
+  "endpoint": "/api/random/indonesia",
+  "query": null
+  },
   {
   "name": "China",
   "method": "GET",
   "description": "Random/China",
   "category": "Random",
   "endpoint": "/api/random/china",
+  "query": null
+  }, 
+  {
+  "name": "Japan",
+  "method": "GET",
+  "description": "Random/Japan",
+  "category": "Random",
+  "endpoint": "/api/random/japan",
+  "query": null
+  },
+  {
+  "name": "Korea",
+  "method": "GET",
+  "description": "Random/Korea",
+  "category": "Random",
+  "endpoint": "/api/random/korea",
+  "query": null
+  }, 
+  {
+  "name": "Thailand",
+  "method": "GET",
+  "description": "Random/Thailand",
+  "category": "Random",
+  "endpoint": "/api/random/thailand",
+  "query": null
+  }, 
+  {
+  "name": "Vietnam",
+  "method": "GET",
+  "description": "Random/Vietnam",
+  "category": "Random",
+  "endpoint": "/api/random/vietnam",
   "query": null
   }
 ];
