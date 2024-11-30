@@ -48,6 +48,14 @@ const features = [
     "query": "text=free%20fire"
   },
   {
+    "name": "Soundcloud",
+    "method": "GET",
+    "description": "Search/Soundcloud",
+    "category": "Search",
+    "endpoint": "/api/search/soundcloud",
+    "query": "text=diary%20depresiku"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
