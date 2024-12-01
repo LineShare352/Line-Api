@@ -96,6 +96,14 @@ const features = [
     "query": "text=Hai%20kamu"
   }, 
   {
+    "name": "Open Ai",
+    "method": "GET",
+    "description": "AI/Open Ai",
+    "category": "AI Tools",
+    "endpoint": "/api/ai/openai",
+    "query": "text=apa%20itu%20asi"
+  }, 
+  {
     "name": "Blackbox",
     "method": "GET",
     "description": "AI/Blackbox",
@@ -253,7 +261,7 @@ const features = [
   "description": "Download/Soundcloud",
   "category": "Download",
   "endpoint": "/api/download/soundcloud",
-  "query": "url=https://m.soundcloud.com/teguh-hariyadi-652597010/anji-dia"
+  "query": "url=https://soundcloud.com/user593948131/last-child-diary-depresiku"
   },
   {
   "name": "Google Drive",
@@ -269,7 +277,7 @@ const features = [
   "description": "Download/Capcut",
   "category": "Download",
   "endpoint": "/api/download/capcut",
-  "query": "url=https://www.capcut.com/t/Zs8Sw9wsE/%20aesthetic"
+  "query": "url="
   },
   {
   "name": "Indonesia",
