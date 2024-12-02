@@ -285,50 +285,58 @@ const features = [
   "description": "Download/Capcut",
   "category": "Download",
   "endpoint": "/api/download/capcut",
-  "query": "url="
+  "query": "url=https://www.capcut.com/t/Zs8Sw9wsE/ aesthetic"
   },
   {
-  "name": "Indonesia",
+  "name": "Cecan Indonesia",
   "method": "GET",
-  "description": "Random/Indonesia",
+  "description": "Random/Cecan Indonesia",
   "category": "Random",
   "endpoint": "/api/random/indonesia",
   "query": null
   },
   {
-  "name": "China",
+  "name": "Cecan China",
   "method": "GET",
-  "description": "Random/China",
+  "description": "Random/Cecan China",
   "category": "Random",
   "endpoint": "/api/random/china",
   "query": null
   }, 
   {
-  "name": "Japan",
+  "name": "Cecan Japan",
   "method": "GET",
-  "description": "Random/Japan",
+  "description": "Random/Cecan Japan",
   "category": "Random",
   "endpoint": "/api/random/japan",
   "query": null
   },
   {
-  "name": "Korea",
+  "name": "Cecan Korea",
   "method": "GET",
-  "description": "Random/Korea",
+  "description": "Random/Cecan Korea",
   "category": "Random",
   "endpoint": "/api/random/korea",
   "query": null
   }, 
   {
-  "name": "Thailand",
+  "name": "Cecan Thailand",
   "method": "GET",
-  "description": "Random/Thailand",
+  "description": "Random/Cecan Thailand",
   "category": "Random",
   "endpoint": "/api/random/thailand",
   "query": null
   }, 
   {
-  "name": "Vietnam",
+  "name": "Cecan Vietnam",
+  "method": "GET",
+  "description": "Random/Cecan Vietnam",
+  "category": "Random",
+  "endpoint": "/api/random/vietnam",
+  "query": null
+  }, 
+  {
+  "name": "Asupan Random",
   "method": "GET",
   "description": "Random/Vietnam",
   "category": "Random",
