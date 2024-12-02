@@ -28,7 +28,6 @@ app.get('/api/download/soundcloud', async (req, res) => {
       status: true,
       creator: "Hello Line", 
       data: response.data.data
-      }))
     });
   } catch (e) {
     console.error("Error:", e.message);
