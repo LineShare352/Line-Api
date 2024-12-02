@@ -72,6 +72,14 @@ const features = [
   "query": "text=naruto"
   },
   {
+  "name": "Komiku-Search",
+  "method": "GET",
+  "description": "Anime/Komiku",
+  "category": "Anime",
+  "endpoint": "/api/anime/komiku",
+  "query": "query=the-max-leveled-hero-will-return"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
