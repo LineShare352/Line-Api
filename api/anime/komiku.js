@@ -25,14 +25,14 @@ async function komiku(search) {
         title,
         description,
         image,
-        url: "https://komiku.id" + link
+        url: "https://komiku.id" + link,
       });
     });
 
     return mangaList;
   } catch (error) {
-    console.error("Error fetching data:", error.message);
-    return [];
+    console.error("Error fetching data in komiku function:", error.message);
+    throw new Error("Failed to fetch data from Komiku API.");
   }
 }
 
@@ -48,23 +48,31 @@ app.get('/api/anime/komiku', async (req, res) => {
       });
     }
 
-    const results = await komiku(query);
+    try {
+      const results = await komiku(query);
 
-    if (results.length === 0) {
-      return res.status(404).json({
+      if (results.length === 0) {
+        return res.status(404).json({
+          status: false,
+          creator: "Hello Line",
+          error: "No results found.",
+        });
+      }
+
+      return res.status(200).json({
+        status: true,
+        creator: "Hello Line",
+        data: results,
+      });
+    } catch (error) {
+      return res.status(500).json({
         status: false,
         creator: "Hello Line",
-        error: "No results found.",
+        error: error.message || "Internal server error.",
       });
     }
-
-    return res.status(200).json({
-      status: true,
-      creator: "Hello Line",
-      data: results,
-    });
-  } catch (e) {
-    console.error("Error:", e.message);
+  } catch (error) {
+    console.error("Error in /api/anime/komiku route:", error.message);
     return res.status(500).json({
       status: false,
       creator: "Hello Line",
