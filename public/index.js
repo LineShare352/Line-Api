@@ -60,7 +60,7 @@ const features = [
     "method": "GET",
     "description": "Search/Detail Teater",
     "category": "Search",
-    "endpoint": "/api/search/detaiteater",
+    "endpoint": "/api/search/detailteater",
     "query": "url=https://www.teater.co/film/moana-2-2024"
   },
   {
