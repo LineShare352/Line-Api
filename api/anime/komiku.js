@@ -9,7 +9,7 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-async function komiku(search) {
+async function komiku(query) {
   try {
     const ress = await axios.get(`https://api.komiku.id/?post_type=manga&s=${encodeURIComponent(query)}`);
     const $ = cheerio.load(ress.data);
