@@ -27,10 +27,7 @@ app.get('/api/download/soundcloud', async (req, res) => {
     return res.status(200).json({
       status: true,
       creator: "Hello Line", 
-      data: data.map(item => ({
-        title: item.title,
-        thumbnail: item.thumbnail,
-        url: item.url
+      data: response.data.data
       }))
     });
   } catch (e) {

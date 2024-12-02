@@ -27,14 +27,7 @@ app.get('/api/download/capcut', async (req, res) => {
     return res.status(200).json({
       status: true,
       creator: "Hello Line", 
-      data: data.map(item => ({
-        code: item.code, 
-        title: item.title, 
-        description: item.description, 
-        usage: item.usage,
-        originalVideoUrl: item.originalVideoUrl, 
-        coverUrl: item.coverUrl, 
-        authorUrl: item.authorUrl
+      data: response.data.data
       }))
     });
   } catch (e) {
