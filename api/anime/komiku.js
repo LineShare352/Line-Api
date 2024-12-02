@@ -11,7 +11,7 @@ app.use(cors());
 
 async function komiku(search) {
   try {
-    const ress = await axios.get(`https://api.komiku.id/?post_type=manga&s=${encodeURIComponent(search)}`);
+    const ress = await axios.get(`https://api.komiku.id/?post_type=manga&s=${encodeURIComponent(query)}`);
     const $ = cheerio.load(ress.data);
     const mangaList = [];
 
