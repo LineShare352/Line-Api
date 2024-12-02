@@ -77,7 +77,7 @@ const features = [
   "description": "Anime/Komiku",
   "category": "Anime",
   "endpoint": "/api/anime/komiku",
-  "query": "search=the-max-leveled-hero-will-return"
+  "query": "query=the-max-leveled-hero-will-return"
   },
   {
   "name": "Brat-Sticker",
