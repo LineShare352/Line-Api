@@ -56,6 +56,14 @@ const features = [
     "query": "text=diary%20depresiku"
   },
   {
+    "name": "Detail Teater",
+    "method": "GET",
+    "description": "Search/Detail Teater",
+    "category": "Search",
+    "endpoint": "/api/search/detaiteater",
+    "query": "url=https://www.teater.co/film/moana-2-2024"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
