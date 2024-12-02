@@ -61,7 +61,7 @@ const features = [
   "description": "Anime/Otakudesu",
   "category": "Anime",
   "endpoint": "/api/anime/otakudesu",
-  "query": "s=sao-alternative-online-s2-sub-indo"
+  "query": "s=naruto"
   },
   {
   "name": "Animebatch-Search",
@@ -328,23 +328,23 @@ const features = [
   "query": null
   }, 
   {
-  "name": "To Raw",
+  "name": "Toghraw",
   "method": "GET",
-  "description": "Tools/To Raw",
+  "description": "Tools/Toghraw",
   "category": "Tools",
   "endpoint": "/api/tools/raw",
   "query": "url=https://github.com/LineShare352/Line-Api/blob/main/public/index.html"
   }, 
   {
-  "name": "To Base64",
+  "name": "ToBase64",
   "method": "GET",
-  "description": "Tools/To Base64",
+  "description": "Tools/ToBase64",
   "category": "Tools",
   "endpoint": "/api/tools/base64",
   "query": "text=Line%20Sanjaya"
   }, 
   {
-  "name": "To Utf8",
+  "name": "ToUtf8",
   "method": "GET",
   "description": "Tools/To Utf8",
   "category": "Tools",
@@ -352,12 +352,20 @@ const features = [
   "query": "text=hai"
   }, 
   {
-  "name": "To Ori",
+  "name": "Toghori",
   "method": "GET",
-  "description": "Tools/To Ori",
+  "description": "Tools/Toghori",
   "category": "Tools",
   "endpoint": "/api/tools/ori",
   "query": "url=https://raw.githubusercontent.com/LineShare352/Line-Api/main/public/index.html"
+  }, 
+  {
+  "name": "Cek IP",
+  "method": "GET",
+  "description": "Tools/Cek IP",
+  "category": "Tools",
+  "endpoint": "/api/tools/cekip",
+  "query": "ip=8.8.8.8"
   }
 ];
 
