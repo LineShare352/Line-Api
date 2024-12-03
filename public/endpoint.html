@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Endpoints</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .code-block {
+      background-color: #1e293b;
+      color: #f8f8f2;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      border: 1px solid #3b82f6;
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    .status-200 { color: #22c55e; font-weight: bold; }
+    .status-201 { color: #16a34a; font-weight: bold; }
+    .status-400 { color: #fbbf24; font-weight: bold; }
+    .status-404 { color: #f87171; font-weight: bold; }
+    .status-500 { color: #ef4444; font-weight: bold; }
+    .section {
+      background-color: #f9fafb;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .section h3 {
+      font-size: 1.5rem;
+      color: #374151;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .section h4 {
+    font-size: 1.25rem;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+    }
+
+    .section p {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center; 
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-indigo-700 to-indigo-600 text-white py-6 shadow-md">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl font-extrabold text-center">API Endpoints</h1>
+      <p class="text-center text-lg mt-2 opacity-90">Comprehensive and structured guide to our API endpoints.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-12">
+
+    <!-- GET Section -->
+    <div class="section">
+      <h3>GET</h3>
+      <h4>/api/v1/resource</h4>
+      <p>Retrieve the list of resources available in the system.</p>
+      <div class="code-block">
+        <span class="status-200">200:</span> Success  
+        {
+          "status": true,
+          "creator": "Hello Line",
+          "data": [
+            {
+              "title": "The MAX leveled hero will return!",
+              "description": "Pahlawan level MAX akan kembali!",
+              "image": "https://cover.komiku.id/wp-content/uploads/2020/11/Manhwa-The-MAX-leveled-hero-will-return.png",
+              "url": "https://komiku.id/manga/the-max-leveled-hero-will-return/"
+            }
+          ]
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-400">400:</span> Bad Request  
+        {
+          "status": false,
+          "message": "Invalid query parameters."
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-500">500:</span> Server Error  
+        {
+          "status": false,
+          "message": "An unexpected error occurred."
+        }
+      </div>
+    </div>
+
+    <!-- POST Section -->
+    <div class="section">
+      <h3>POST</h3>
+      <h4>/api/v1/resource</h4>
+      <p>Create a new resource in the system.</p>
+      <div class="code-block">
+        <span class="status-201">201:</span> Created  
+        {
+          "status": true,
+          "creator": "Hello Line",
+          "data": {
+            "title": "The MAX leveled hero will return!",
+            "description": "Pahlawan level MAX telah ditambahkan!",
+            "image": "https://cover.komiku.id/wp-content/uploads/2020/11/Manhwa-The-MAX-leveled-hero-will-return.png",
+            "url": "https://komiku.id/manga/the-max-leveled-hero-will-return/"
+          }
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-400">400:</span> Bad Request  
+        {
+          "status": false,
+          "message": "Invalid or missing data fields."
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-500">500:</span> Server Error  
+        {
+          "status": false,
+          "message": "Unable to create the resource."
+        }
+      </div>
+    </div>
+
+    <!-- DELETE Section -->
+    <div class="section">
+      <h3>DELETE</h3>
+      <h4>/api/v1/resource/:id</h4>
+      <p>Delete a specific resource by ID.</p>
+      <div class="code-block">
+        <span class="status-200">200:</span> Success  
+        {
+          "status": true,
+          "creator": "Hello Line",
+          "data": {
+            "id": "12345",
+            "message": "Resource deleted successfully."
+          }
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-404">404:</span> Not Found  
+        {
+          "status": false,
+          "message": "Resource with the given ID not found."
+        }
+      </div>
+      <div class="code-block">
+        <span class="status-500">500:</span> Server Error  
+        {
+          "status": false,
+          "message": "Unable to delete the resource."
+        }
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+    <div class="container text-center">
+      <p>&copy; 2024 Hello Line. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
