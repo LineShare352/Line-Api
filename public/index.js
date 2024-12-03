@@ -80,6 +80,14 @@ const features = [
     "query": "makanan=ayam"
   },
   {
+    "name": "Apple Search",
+    "method": "GET",
+    "description": "Search/Apple",
+    "category": "Search",
+    "endpoint": "/api/search/apple",
+    "query": "query=macbook"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
