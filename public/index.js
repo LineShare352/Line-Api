@@ -64,6 +64,14 @@ const features = [
     "query": "url=https://www.teater.co/film/moana-2-2024"
   },
   {
+    "name": "Berita Hoax",
+    "method": "GET",
+    "description": "Search/Berita Hoax",
+    "category": "Search",
+    "endpoint": "/api/search/hoax",
+    "query": "category=covid"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
