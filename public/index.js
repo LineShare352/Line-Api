@@ -72,6 +72,14 @@ const features = [
     "query": "category=covid"
   },
   {
+    "name": "Food Search",
+    "method": "GET",
+    "description": "Search/Food",
+    "category": "Search",
+    "endpoint": "/api/search/food",
+    "query": "makanan=ayam"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
