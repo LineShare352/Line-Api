@@ -363,7 +363,7 @@ const features = [
   "name": "Asupan Random",
   "method": "GET",
   "description": "Random/Asupan",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/asupan",
   "query": null
   },
