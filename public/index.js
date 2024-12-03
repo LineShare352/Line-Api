@@ -354,11 +354,11 @@ const features = [
   {
   "name": "Asupan Random",
   "method": "GET",
-  "description": "Random/Vietnam",
-  "category": "Random",
-  "endpoint": "/api/random/vietnam",
+  "description": "Random/Asupan",
+  "category": "Games",
+  "endpoint": "/api/random/asupan",
   "query": null
-  }, 
+  },
   {
   "name": "Toghraw",
   "method": "GET",
