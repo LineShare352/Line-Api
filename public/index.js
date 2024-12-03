@@ -320,6 +320,14 @@ const features = [
   "query": "url=https://www.capcut.com/t/Zs8Sw9wsE/ aesthetic"
   },
   {
+  "name": "Terabox",
+  "method": "GET",
+  "description": "Download/Terabox",
+  "category": "Download",
+  "endpoint": "/api/download/terabox",
+  "query": "url=https://terabox.com/s/1A6XAXNBdHuLneJ51dNNy0g"
+  },
+  {
   "name": "Cecan Indonesia",
   "method": "GET",
   "description": "Random/Cecan Indonesia",
