@@ -328,6 +328,14 @@ const features = [
   "query": "url=https://terabox.com/s/1A6XAXNBdHuLneJ51dNNy0g"
   },
   {
+  "name": "Ytdlv2",
+  "method": "GET",
+  "description": "Download/Ytdlv2",
+  "category": "Download",
+  "endpoint": "/api/download/ytdlv2",
+  "query": "url=https://youtu.be/VtRUL3XyfZo?si=mYXU5iPXwcbZqXea&videoQuality=5&audioQuality=3"
+  },
+  {
   "name": "Cecan Indonesia",
   "method": "GET",
   "description": "Random/Cecan Indonesia",
