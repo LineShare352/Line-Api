@@ -112,6 +112,14 @@ const features = [
   "query": "query=the-max-leveled-hero-will-return"
   },
   {
+  "name": "Manhua-Search",
+  "method": "GET",
+  "description": "Anime/Manhua",
+  "category": "Anime",
+  "endpoint": "/api/anime/manhua",
+  "query": "name=Solo Leveling"
+  },
+  {
   "name": "Brat-Sticker",
   "method": "GET",
   "description": "Maker/Brat-Sticker.",
