@@ -8,10 +8,10 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-const cimg = async (prompt) => {
+async function cimg(prompt) {
   try {
     const response = await axios.get(`https://imgen.duck.mom/prompt/${encodeURIComponent(prompt)}`, {
-      timeout: 20000,
+      timeout: 20000, 
     });
     
     const imageUrl = response.request.res.responseUrl;  
@@ -30,7 +30,7 @@ const cimg = async (prompt) => {
     
     return null;
   }
-};
+}
 
 app.get('/api/maker/cimg', async (req, res) => {
   const { prompt } = req.query;
@@ -46,12 +46,12 @@ app.get('/api/maker/cimg', async (req, res) => {
   try {
     const imageUrl = await cimg(prompt);
     
-    // Jika berhasil mendapatkan gambar, lakukan redirect
     if (imageUrl) {
       return res.redirect(imageUrl);
     } else {
       return res.status(500).json({
         success: false,
+        creator: "Hello Line",
         error: "Failed to fetch image from CIMG.",
       });
     }
@@ -64,7 +64,6 @@ app.get('/api/maker/cimg', async (req, res) => {
   }
 });
 
-// Menjalankan server
 app.listen(PORT, () => {
   console.log(`Server berjalan di http://localhost:${PORT}`);
 });
