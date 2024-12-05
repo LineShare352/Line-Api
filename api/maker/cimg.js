@@ -8,6 +8,30 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
+const cimg = async (prompt) => {
+  try {
+    const response = await axios.get(`https://imgen.duck.mom/prompt/${encodeURIComponent(prompt)}`, {
+      timeout: 20000,
+    });
+    
+    const imageUrl = response.request.res.responseUrl;  
+    
+    if (imageUrl) {
+      return imageUrl;
+    } else {
+      throw new Error('Failed to retrieve a valid image URL.');
+    }
+  } catch (error) {
+    console.error("Error fetching image from CIMG:", error.message);
+    
+    if (error.code === 'ECONNABORTED') {
+      throw new Error('Request timed out. Please try again later.');
+    }
+    
+    return null;
+  }
+};
+
 app.get('/api/maker/cimg', async (req, res) => {
   const { prompt } = req.query;
 
@@ -20,17 +44,22 @@ app.get('/api/maker/cimg', async (req, res) => {
   }
 
   try {
-    const response = await axios.get(`https://imgen.duck.mom/prompt/${encodeURIComponent(prompt)}`, {
-      responseType: 'arraybuffer',
-    });
+    const imageUrl = await cimg(prompt);
     
-    res.set('Content-Type', response.headers['content-type']);
-    return res.send(response.data);
+    // Jika berhasil mendapatkan gambar, lakukan redirect
+    if (imageUrl) {
+      return res.redirect(imageUrl);
+    } else {
+      return res.status(500).json({
+        success: false,
+        error: "Failed to fetch image from CIMG.",
+      });
+    }
   } catch (error) {
-    console.error("Error fetching image from CIMG:", error.message);
+    console.error("Error in /api/maker/cimg:", error.message);
     return res.status(500).json({
       success: false,
-      error: "Failed to fetch image from CIMG.",
+      error: error.message || "Internal server error.",
     });
   }
 });
