@@ -144,6 +144,14 @@ const features = [
     "query": "text=halo&avatar=https://telegra.ph/file/c3f3d2c2548cbefef1604.jpg&username=Line", 
   }, 
   {
+    "name": "Cimg Maker",
+    "method": "GET",
+    "description": "Maker/Cimg",
+    "category": "Maker",
+    "endpoint": "/api/maker/cimg",
+    "query": "prompt=Women without clothes",
+  }, 
+  {
     "name": "Luminai",
     "method": "GET",
     "description": "AI/Lumin",
