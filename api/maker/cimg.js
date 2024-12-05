@@ -22,7 +22,7 @@ app.get('/api/maker/cimg', async (req, res) => {
   try {
     const response = await axios.get(`https://imgen.duck.mom/prompt/${encodeURIComponent(prompt)}`, {
       responseType: 'arraybuffer',
-      timeout: 30000,  // Timeout 30 detik
+      timeout: 100000,  // Timeout 1 menit
     });
     
     res.set('Content-Type', response.headers['content-type']);
