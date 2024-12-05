@@ -8,17 +8,6 @@ app.enable("trust proxy");
 app.set("json spaces", 2);
 app.use(cors());
 
-const cimg = async (prompt) => {
-  try {
-    const response = await axios.get(`https://imgen.duck.mom/prompt/${prompt}`);
-    const imageUrl = response.request.res.responseUrl;  
-    return imageUrl;
-  } catch (error) {
-    console.error("Error fetching image from CIMG:", error.message);
-    return null;
-  }
-};
-
 app.get('/api/maker/cimg', async (req, res) => {
   const { prompt } = req.query;
 
@@ -30,11 +19,15 @@ app.get('/api/maker/cimg', async (req, res) => {
     });
   }
 
-  const imageUrl = await cimg(prompt);
-  
-  if (imageUrl) {
-    return res.redirect(imageUrl);
-  } else {
+  try {
+    const response = await axios.get(`https://imgen.duck.mom/prompt/${encodeURIComponent(prompt)}`, {
+      responseType: 'arraybuffer',
+    });
+    
+    res.set('Content-Type', response.headers['content-type']);
+    return res.send(response.data);
+  } catch (error) {
+    console.error("Error fetching image from CIMG:", error.message);
     return res.status(500).json({
       success: false,
       error: "Failed to fetch image from CIMG.",
