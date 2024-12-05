@@ -88,6 +88,14 @@ const features = [
     "query": "query=macbook"
   },
   {
+    "name": "Fitgirl Search",
+    "method": "GET",
+    "description": "Search/Fitgirl",
+    "category": "Search",
+    "endpoint": "/api/search/fitgirl",
+    "query": "page=1"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
