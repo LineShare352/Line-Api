@@ -451,7 +451,7 @@ const features = [
   "name": "Random Asupan",
   "method": "GET",
   "description": "Random/Asupan",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/asupan",
   "query": null
   },
@@ -459,7 +459,7 @@ const features = [
   "name": "Random Quotes",
   "method": "GET",
   "description": "Random/Quotes",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/quotes",
   "query": null
   },
@@ -467,7 +467,7 @@ const features = [
   "name": "Random Jokes",
   "method": "GET",
   "description": "Random/Jokes",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/jokes",
   "query": null
   },
@@ -475,7 +475,7 @@ const features = [
   "name": "Random Meme",
   "method": "GET",
   "description": "Random/Meme",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/meme",
   "query": null
   },
@@ -483,7 +483,7 @@ const features = [
   "name": "Random Dog",
   "method": "GET",
   "description": "Random/Dog",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/dog",
   "query": null
   },
@@ -491,7 +491,7 @@ const features = [
   "name": "Random User Generator",
   "method": "GET",
   "description": "Random/User",
-  "category": "Games",
+  "category": "Random",
   "endpoint": "/api/random/user",
   "query": null
   },
