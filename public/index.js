@@ -124,7 +124,8 @@ const features = [
     "method": "GET",
     "description": "Search/Crypto",
     "category": "Search",
-    "endpoint": "/api/search/crypto"
+    "endpoint": "/api/search/crypto", 
+    "query": null
   },
   {
   "name": "Otakudesu-Search",
@@ -157,6 +158,14 @@ const features = [
   "category": "Anime",
   "endpoint": "/api/anime/manhua",
   "query": "name=Solo Leveling"
+  },
+  {
+  "name": "Myanime-Search",
+  "method": "GET",
+  "description": "Anime/Myanime",
+  "category": "Anime",
+  "endpoint": "/api/anime/myanime",
+  "query": "query=naruto"
   },
   {
   "name": "Brat-Sticker",
