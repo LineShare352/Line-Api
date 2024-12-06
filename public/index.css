@@ -3,8 +3,8 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #1e1e2f, #2a2a40);
-  color: #fff;
+  background: linear-gradient(to bottom, #e0e7ff, #f3f4f6);
+  color: #333;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -16,10 +16,9 @@ body {
   margin: 50px auto;
   padding: 20px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -33,17 +32,15 @@ header img {
 }
 
 h1 {
-  font-size: 3rem;
-  background: linear-gradient(90deg, #ff007a, #00e0ff, #ff007a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #4f46e5;
+  margin-bottom: 10px;
 }
 
 header p {
-  font-size: 1.2rem;
-  color: #aaa;
-  line-height: 1.8;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
 .features-grid {
@@ -54,59 +51,55 @@ header p {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  background: linear-gradient(145deg, #e3e6f0, #ffffff);
+  border-radius: 15px;
   width: 280px;
   padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease-in-out, background 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  background: linear-gradient(145deg, #ff007a, #00e0ff);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card .icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #ff007a, #00e0ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rgb-fade 2s infinite;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #4f46e5;
+  animation: pop 1s infinite alternate;
 }
 
 .card h3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .card p {
   font-size: 1rem;
-  color: #ccc;
-  margin-bottom: 20px;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 .card button {
-  padding: 12px 25px;
-  background: linear-gradient(90deg, #ff007a, #00e0ff);
+  padding: 10px 20px;
+  background-color: #4f46e5;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .card button:hover {
-  background: linear-gradient(90deg, #00e0ff, #ff007a);
-  transform: scale(1.1);
+  background-color: #3b36cb;
 }
 
 /* Back to Top Button */
@@ -114,30 +107,28 @@ header p {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(90deg, #ff007a, #00e0ff);
+  background-color: #4f46e5;
   color: white;
-  padding: 15px;
+  padding: 10px 15px;
   border-radius: 50%;
-  font-size: 2rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  font-size: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   display: none;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 #back-to-top:hover {
-  background: linear-gradient(90deg, #00e0ff, #ff007a);
-  transform: scale(1.2);
+  background-color: #3b36cb;
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #aaa;
+  background-color: #4f46e5;
+  color: white;
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 footer p {
@@ -155,11 +146,11 @@ footer p {
   }
 }
 
-@keyframes rgb-fade {
-  0%, 100% {
-    filter: hue-rotate(0deg);
+@keyframes pop {
+  0% {
+    transform: scale(1);
   }
-  50% {
-    filter: hue-rotate(180deg);
+  100% {
+    transform: scale(1.1);
   }
   }
