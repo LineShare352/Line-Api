@@ -96,6 +96,37 @@ const features = [
     "query": "page=1"
   },
   {
+    "name": "Antara News",
+    "method": "GET",
+    "description": "Search/Antara News",
+    "category": "Search",
+    "endpoint": "/api/search/antara",
+    "query": "query=politik"
+  },
+  {
+    "name": "Imdb Search",
+    "method": "GET",
+    "description": "Search/Imdb",
+    "category": "Search",
+    "endpoint": "/api/search/imdb",
+    "query": "query=inception"
+  },
+  {
+    "name": "Weather Search",
+    "method": "GET",
+    "description": "Search/Weather",
+    "category": "Search",
+    "endpoint": "/api/search/weather",
+    "query": "city=jakarta"
+  },
+  {
+    "name": "Crypto Search",
+    "method": "GET",
+    "description": "Search/Crypto",
+    "category": "Search",
+    "endpoint": "/api/search/crypto"
+  },
+  {
   "name": "Otakudesu-Search",
   "method": "GET",
   "description": "Anime/Otakudesu",
