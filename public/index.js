@@ -460,24 +460,28 @@ const features = [
   "method": "GET",
   "description": "Random/Quotes",
   "category": "Games",
-  "endpoint": "/api/random/quotes",
-  "query": null
+  "endpoint": "/api/random/quotes"
   },
   {
   "name": "Jokes Random",
   "method": "GET",
   "description": "Random/Jokes",
   "category": "Games",
-  "endpoint": "/api/random/jokes",
-  "query": null
+  "endpoint": "/api/random/jokes"
   },
   {
   "name": "Meme Random",
   "method": "GET",
   "description": "Random/Meme",
   "category": "Games",
-  "endpoint": "/api/random/meme",
-  "query": null
+  "endpoint": "/api/random/meme"
+  },
+  {
+  "name": "Dog Random",
+  "method": "GET",
+  "description": "Random/Dog",
+  "category": "Games",
+  "endpoint": "/api/random/dog"
   },
   {
   "name": "Toghraw",
