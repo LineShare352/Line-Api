@@ -11,26 +11,16 @@ app.use(cors());
 
 const weatherInfo = async (city) => {
   try {
-    const response = await axios.get(`https://weather.com/weather/today/l/${encodeURIComponent(city)}`);
-    const $ = cheerio.load(response.data);
-
-    const location = $(".CurrentConditions--location--1Ayv3").text();
-    const temperature = $(".CurrentConditions--tempValue--3KcTQ").text();
-    const condition = $(".CurrentConditions--phraseValue--2xXSr").text();
-
+    const response = await axios.get(`https://wttr.in/${city}?format=%C+%t`);
     return {
       success: true,
-      author: "Hello Line",
-      result: {
-        location,
-        temperature,
-        condition,
-      },
+      author: "@Selxyz",
+      result: response.data,
       request_at: new Date(),
     };
   } catch (error) {
     console.error("Error fetching weather data:", error.message);
-    return { success: false, error: "Failed to fetch weather information." };
+    return { success: false, error: "Failed to fetch weather info." };
   }
 };
 
@@ -47,4 +37,8 @@ app.get('/api/search/weather', async (req, res) => {
 
   const weatherData = await weatherInfo(city);
   return res.status(weatherData.success ? 200 : 500).json(weatherData);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
