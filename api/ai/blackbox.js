@@ -22,8 +22,8 @@ app.get('/api/ai/blackbox', async (req, res) => {
   try {
     const requestData = {
       content: text,
-      cName: "LineAja",
-      cID: "LineAja1iMSwjx",
+      cName: "L-Ai",
+      cID: "L-AiNphuJJM",
     };
 
     const response = await axios.post('https://luminai.my.id/', requestData);
