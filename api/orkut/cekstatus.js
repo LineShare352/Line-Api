@@ -27,7 +27,13 @@ const getMutasiQRIS = async (merchant, keyorkut) => {
 };
 
 app.get('/api/orkut/cekstatus', async (req, res) => {
-  const { merchant, keyorkut } = req.query;
+  const { apikey, merchant, keyorkut } = req.query;
+
+  if (apikey !== 'line') {
+    return res.status(403).json({
+      error: "Isi parameter Apikey",
+    });
+  }
 
   if (!merchant) {
     return res.status(400).json({
