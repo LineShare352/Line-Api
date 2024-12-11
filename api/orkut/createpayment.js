@@ -60,8 +60,8 @@ app.get('/api/orkut/createpayment', async (req, res) => {
     });
   }
 
-  const transactionAmount = amount 
-  const qrCode = codeqr 
+  const transactionAmount = amount;
+  const qrCode = codeqr;
 
   if (!amount) {
     return res.status(400).json({
